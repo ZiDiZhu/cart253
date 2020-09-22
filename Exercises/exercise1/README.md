@@ -1,4 +1,4 @@
-# Template p5 project
+# exercise1
 
 guide 2 interact with this piece of artwork
 
