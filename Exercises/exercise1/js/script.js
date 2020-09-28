@@ -11,7 +11,7 @@ i'll try to do something using the alien i drew at activity 2
 let margin = 50;
 
 let bg = {
-  r:200,
+  r:0,
   b:100,
   g:100
 }
