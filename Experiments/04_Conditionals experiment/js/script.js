@@ -8,6 +8,8 @@ Fun with if , else, or (||), and (&&)
 
 let bgwhite = false;
 
+let angle = 0;
+
 let bgShade = 0;
 let circle = {
   x:0,
@@ -17,6 +19,7 @@ let circle = {
   ax:0.1,
   maxV:10
 }
+let rectScale = 1;
 
 let dot = {
   x: 100,
@@ -33,23 +36,48 @@ function draw() {
 
   background(bgShade);
 
+  rectScale +=0.01;
+  rectScale = constrain(rectScale,1,5);
+
+  angle +=0.1;
+  push();
+  fill(20);
+  translate(70,70);
+  rotate(angle);
+  rectMode(CENTER);
+  scale(rectScale);
+  //use translate to move it so it rotates around its center
+  rect(0,0,100,100);
+  pop();
+
   let x = dot.x;
   let numdots = 5;
   let dotsdrawn = 0;
 
+//write between push() and pop() to make the style independent of the rest
+  push()
+  stroke(0,233,233);
+  strokeWeight(5);
+  fill(170,20,30);
   while(dotsdrawn < numdots){
     ellipse(x,dot.y,dot.size);
     x += 30;
     dotsdrawn +=1;
   }
+  pop();
 
 //same as:
 //a classic for loop
 
+
+//translate(x,y), push() and pop() also applies
+  push();
+  translate(0,40);
   for(let i=0; i<numdots;i++){
-    ellipse(x,dot.y+40,dot.size);
+    ellipse(x,dot.y,dot.size);
     x += 30;
   }
+  pop();
 
 
   if(!bgwhite){
