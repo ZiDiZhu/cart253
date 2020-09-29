@@ -1,3 +1,4 @@
-# Template p5 project
+# Concept : Clown simulator
 
-This is the README file for the entire project. For more official projects you should write information here about the nature of the project, your name, any special explanations of how the project works, etc.
+a rythme game that is also a side scroller shooter
+AD to move Space to jump fire1 to shoot
