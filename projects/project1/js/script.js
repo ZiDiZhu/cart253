@@ -1,20 +1,107 @@
 /**************************************************
-Template p5 project
-Pippin Barr
+Project1: Pain simulaTOR
 
-Here is a description of this template p5 project.
+this is not a literal pain simulator,
+but a painting simulator where you have to mix color in RBG mode and fill in the colors to your painting!!
 **************************************************/
 
-// setup()
-//
-// Description of setup() goes here.
+let isR = false;
+let isG = false;
+let isB = false;
+
+let colorNow = {
+  r:20,
+  b:20,
+  g:20,
+  x:600,
+  y:500,
+  size:120
+}
+
+// not colorNow
+// change positions
+//use ellipses
+let red ={
+  x:100,
+  y:500,
+  size:100
+}
+
+let green ={
+  x:250,
+  y:500,
+  size: 100
+}
+
+let  blue= {
+  x:400,
+  y:500,
+  size:100
+}
+
+let bg = 0;
+
+function preload(){
+  //load background images here
+  //load text
+}
+
 function setup() {
+
+createCanvas (800,600);
+background(bg);
+
+//color pickers
+
+fill(255,0,0);
+ellipse(red.x, red.y, red.size);
+
+fill(0,255,0);
+ellipse(green.x, green.y, green.size);
+
+fill(0,0,255);
+ellipse(blue.x, blue.y, blue.size);
 
 }
 
-// draw()
-//
-// Description of draw() goes here.
+
 function draw() {
+
+  fill(colorNow.r,colorNow.g,colorNow.b);
+  ellipse(colorNow.x,colorNow.y,colorNow.size);
+
+  //print(isR);
+
+}
+
+function mousePressed(){
+
+  let dRed = dist(mouseX,mouseY,red.x,red.y);
+  let dGreen = dist(mouseX,mouseY,green.x,green.y);
+  let dBlue = dist(mouseX,mouseY,blue.x,blue.y);
+
+  if(dRed < 110 && isR === false){
+    colorNow.r = 255;
+    isR = true;
+  } else if(dRed < 110 && isR === true){
+    colorNow.r = 20;
+    isR = false;
+  }
+
+  if(dGreen < 110 && isG === false){
+    colorNow.g = 255;
+    isG = true;
+  } else if(dGreen < 110 && isG === true){
+    colorNow.g = 20;
+    isG = false;
+  }
+
+  if(dBlue < 110 && isB === false){
+    colorNow.b = 255;
+    isB = true;
+  } else if(dBlue < 110 && isB === true){
+    colorNow.b = 20;
+    isB = false;
+  }
 
 }
