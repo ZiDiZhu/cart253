@@ -26,7 +26,10 @@ let user = {
   size:100
 }
 
-let clownImg;
+let clownImg={
+  x:100,
+  y:100
+};
 
 let maxStatic = 80;
 
@@ -82,7 +85,7 @@ function draw() {
   //fill(covid19.fill.r,covid19.fill.g,covid19.fill.b);
   //ellipse(covid19.x, covid19.y, covid19.size);
     imageMode(CENTER);
-    image(clownImg,covid19.x,covid19.y,100,100);
+    image(clownImg,covid19.x,covid19.y,clownImg.x,clownImg.y);
 
         imageMode(CENTER);
         image(clownImg,covid19.x,height - covid19.y,100,100);
