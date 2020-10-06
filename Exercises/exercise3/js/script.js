@@ -101,7 +101,7 @@ function setupGame(){
       text(love.string,love.x,love.y);
       text(notlove1.string, notlove1.x,notlove1.y);
       text(notlove2.string, notlove2.x,notlove2.y);
-      text(notlove3.string, notlove2.x,notlove1.y);
+      text(notlove3.string, notlove3.x,notlove3.y);
 }
 
 function randomize(){
