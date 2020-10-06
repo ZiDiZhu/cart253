@@ -67,6 +67,9 @@ function toCelsius(farenheit){
 }
 
 function keyPressed(){
+
+  if (keyCode === 32){
+
   if (state === `state1`){
     state =  `state2`;
       reset();
@@ -78,6 +81,8 @@ function keyPressed(){
   else  if (state === `state3` ){
     state =  `state1`;
       reset();
+  }
+
   }
 }
 
