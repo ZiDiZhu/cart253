@@ -11,12 +11,17 @@ strings
 // Description of setup() goes here.
 
 let text1 = {
-    string: "'this' is a \"string\"",
+    string: "this is a string",
     x:250,
-    y:250
-
+    y:0,
+    vy:2
 };
-let text2 = 'this is also "a string"';
+
+let state = `state1`;
+
+let text2 ={
+  string:'this is also "a string"'
+} ;
 let text3 = `here's a "template string!"`;
 
 let hotCelsius;
@@ -37,16 +42,48 @@ function draw() {
 
   background(120);
 
-  textAlign(CENTER,CENTER);
-  textSize(64);
-  textStyle(ITALIC);
-  fill(120,77,0);
-  text(text1.string,text1.x,text1.y);
+  if(state === `state1`){
+      text1.y +=text1.vy;
+      text(text1.string,text1.x,text1.y);
+  }
+  else if (state === `state2`){
+
+      text1.y +=text1.vy;
+      text(text2.string,text1.x,text1.y);
+  }
+  else if (state ===`state3`){
+      text1.y +=text1.vy;
+      text(text3,text1.x,text1.y);
+  }
+
+  if(text1.y > height){
+    reset();
+  }
 }
 
 function toCelsius(farenheit){
   let celsius = (farenheit - 32) * 5/9;
   return celsius;
+}
+
+function keyPressed(){
+  if (state === `state1`){
+    state =  `state2`;
+      reset();
+  }
+  else if (state === `state2` ){
+    state =  `state3`;
+      reset();
+  }
+  else  if (state === `state3` ){
+    state =  `state1`;
+      reset();
+  }
+}
+
+function reset(){
+  text1.x = 250 ;
+  text1.y = 0;
 }
 
 function checkifHot(){
