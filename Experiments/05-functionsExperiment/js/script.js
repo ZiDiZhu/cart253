@@ -1,20 +1,28 @@
 /**************************************************
-Template p5 project
-Pippin Barr
+5 - functions
+zidizidizidi
 
 experiment with functions with parameter / return value
+strings
 **************************************************/
 
 // setup()
 //
 // Description of setup() goes here.
 
+let text1 = {
+    string: "'this' is a \"string\"",
+    x:250,
+    y:250
+
+};
+let text2 = 'this is also "a string"';
+let text3 = `here's a "template string!"`;
+
 let hotCelsius;
 
 function setup() {
   createCanvas(500,500);
-
-
       checkifHot();
 
       // let coldCelsius = toCelsius(10);
@@ -27,8 +35,13 @@ function setup() {
 // Description of draw() goes here.
 function draw() {
 
-  background(0);
+  background(120);
 
+  textAlign(CENTER,CENTER);
+  textSize(64);
+  textStyle(ITALIC);
+  fill(120,77,0);
+  text(text1.string,text1.x,text1.y);
 }
 
 function toCelsius(farenheit){
