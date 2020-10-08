@@ -10,6 +10,9 @@ let isR = false;
 let isG = false;
 let isB = false;
 
+let state = `intro`;//game ,end ,
+let mixingMode = `additive`; // substractive?? potentially
+
 // current color
 let colorNow = {
   r:20,
@@ -61,6 +64,7 @@ background(bg);
 
 function draw() {
 
+  fill(250,250,250);
   textSize(32);
   text(`reset`,resetText.x, resetText.y);
 
@@ -79,11 +83,15 @@ function draw() {
   fill(colorNow.r,colorNow.g,colorNow.b);
   ellipse(colorNow.x,colorNow.y,colorNow.size);
 
-  //paint
+
+//paint
 if(mouseIsPressed && dist(mouseX,mouseY,resetText.x,resetText.y)>60){
-  fill(colorNow.r,colorNow.g,colorNow.b);
-  noStroke();
-  ellipse(mouseX,mouseY,brushSize);
+
+  push();
+  strokeWeight(10);
+  stroke(colorNow.r,colorNow.g,colorNow.b);
+  line(pmouseX, pmouseY, mouseX, mouseY);
+  pop();
 }
 
 }
@@ -91,6 +99,9 @@ if(mouseIsPressed && dist(mouseX,mouseY,resetText.x,resetText.y)>60){
 function resetCanvas(){
   clear();
   background(bg);
+  colorNow.r=20;
+  colorNow.g=20;
+  colorNow.b=20;
 }
 
 function mousePressed(){
