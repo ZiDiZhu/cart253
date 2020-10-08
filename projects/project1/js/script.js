@@ -39,6 +39,8 @@ let  blue= {
 
 let bg = 0;
 
+let brushSize = 10;
+
 function preload(){
   //load background images here
   //load text
@@ -70,10 +72,20 @@ function draw() {
   ellipse(colorNow.x,colorNow.y,colorNow.size);
 
   //print(isR);
+if(mouseIsPressed){
+  fill(colorNow.r,colorNow.g,colorNow.b);
+  noStroke();
+  ellipse(mouseX,mouseY,brushSize);
+}
 
 }
 
 function mousePressed(){
+
+  colorMixer();
+}
+
+function colorMixer(){
 
   //check if mouse is in range of each color
   let dRed = dist(mouseX,mouseY,red.x,red.y);
@@ -81,28 +93,28 @@ function mousePressed(){
   let dBlue = dist(mouseX,mouseY,blue.x,blue.y);
 
   //Red on/off
-  if(dRed < 110 && isR === false){
+  if(dRed < 100 && isR === false){
     colorNow.r = 255;
     isR = true;
-  } else if(dRed < 110 && isR === true){
+  } else if(dRed < 100 && isR === true){
     colorNow.r = 20;
     isR = false;
   }
 
   //Green on/off
-  if(dGreen < 110 && isG === false){
+  if(dGreen < 100 && isG === false){
     colorNow.g = 255;
     isG = true;
-  } else if(dGreen < 110 && isG === true){
+  } else if(dGreen < 100 && isG === true){
     colorNow.g = 20;
     isG = false;
   }
 
   //Blue on/off
-  if(dBlue < 110 && isB === false){
+  if(dBlue < 100 && isB === false){
     colorNow.b = 255;
     isB = true;
-  } else if(dBlue < 110 && isB === true){
+  } else if(dBlue < 100 && isB === true){
     colorNow.b = 20;
     isB = false;
   }
