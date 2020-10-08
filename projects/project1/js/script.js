@@ -41,6 +41,11 @@ let bg = 0;
 
 let brushSize = 10;
 
+let resetText = {
+  x: 380,
+  y: 40,
+}
+
 function preload(){
   //load background images here
   //load text
@@ -51,28 +56,31 @@ function setup() {
 createCanvas (800,600);
 background(bg);
 
-//color pickers
-
-fill(255,0,0);
-ellipse(red.x, red.y, red.size);
-
-fill(0,255,0);
-ellipse(green.x, green.y, green.size);
-
-fill(0,0,255);
-ellipse(blue.x, blue.y, blue.size);
-
 }
 
 
 function draw() {
 
+  textSize(32);
+  text(`reset`,resetText.x, resetText.y);
+
+  //color pickers
+
+  fill(255,0,0);
+  ellipse(red.x, red.y, red.size);
+
+  fill(0,255,0);
+  ellipse(green.x, green.y, green.size);
+
+  fill(0,0,255);
+  ellipse(blue.x, blue.y, blue.size);
+
   //current color display
   fill(colorNow.r,colorNow.g,colorNow.b);
   ellipse(colorNow.x,colorNow.y,colorNow.size);
 
-  //print(isR);
-if(mouseIsPressed){
+  //paint
+if(mouseIsPressed && dist(mouseX,mouseY,resetText.x,resetText.y)>60){
   fill(colorNow.r,colorNow.g,colorNow.b);
   noStroke();
   ellipse(mouseX,mouseY,brushSize);
@@ -80,9 +88,19 @@ if(mouseIsPressed){
 
 }
 
+function resetCanvas(){
+  clear();
+  background(bg);
+}
+
 function mousePressed(){
 
   colorMixer();
+
+  let dReset = dist(mouseX,mouseY,resetText.x,resetText.y);
+  if(dReset < 60){
+    resetCanvas();
+  }
 }
 
 function colorMixer(){
