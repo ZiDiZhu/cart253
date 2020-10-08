@@ -12,40 +12,39 @@ let isB = false;
 
 let state = `intro`;//game ,end ,
 let mixingMode = `additive`; // substractive?? potentially
+let instructiontext =`Instruction:\n paint with your mouse\n click on circles on the left to mix your color in RGB \n best played in fullscreen`;
 
 // current color
 let colorNow = {
   r:20,
   b:20,
   g:20,
-  x:600,
+  x:100,
   y:500,
-  size:120
+  size:20
 };
 
 // color pickers
 let red ={
   x:100,
-  y:500,
+  y:60,
   size:100
 };
 let green ={
-  x:250,
-  y:500,
+  x:100,
+  y:180,
   size: 100
 };
 let  blue= {
-  x:400,
-  y:500,
+  x:100,
+  y:300,
   size:100
 };
 
 let bg = 0;
 
-let brushSize = 10;
-
 let resetText = {
-  x: 380,
+  x: 250,
   y: 40,
 }
 
@@ -56,17 +55,25 @@ function preload(){
 
 function setup() {
 
-createCanvas (800,600);
+createCanvas (windowWidth,windowHeight);
 background(bg);
 
+fill(250,250,250);
+textSize(14);
+text(instructiontext,200,70);
 }
 
 
 function draw() {
 
-  fill(250,250,250);
+  if(keyIsDown(65)){
+    colorNow.size = 10;
+  }
+
+  fill(255,150,150);
   textSize(32);
   text(`reset`,resetText.x, resetText.y);
+  text(`brush:`,60,420);
 
   //color pickers
 
@@ -83,12 +90,11 @@ function draw() {
   fill(colorNow.r,colorNow.g,colorNow.b);
   ellipse(colorNow.x,colorNow.y,colorNow.size);
 
-
 //paint
 if(mouseIsPressed && dist(mouseX,mouseY,resetText.x,resetText.y)>60){
 
   push();
-  strokeWeight(10);
+  strokeWeight(colorNow.size);
   stroke(colorNow.r,colorNow.g,colorNow.b);
   line(pmouseX, pmouseY, mouseX, mouseY);
   pop();
@@ -105,6 +111,8 @@ function resetCanvas(){
 }
 
 function mousePressed(){
+
+  instructiontext = ``;
 
   colorMixer();
 
