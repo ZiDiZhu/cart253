@@ -60,46 +60,28 @@ background(bg);
 
 fill(250,250,250);
 textSize(14);
-text(instructiontext,200,70);
+showInstruction();
 }
 
 
 function draw() {
 
-  if(keyIsDown(65)){
-    colorNow.size = 10;
-  }
+  displayUI();
 
-  fill(255,150,150);
-  textSize(32);
-  text(`reset`,resetText.x, resetText.y);
-  text(`brush:`,60,420);
+  paint();
 
-  //color pickers
-
-  fill(255,0,0);
-  ellipse(red.x, red.y, red.size);
-
-  fill(0,255,0);
-  ellipse(green.x, green.y, green.size);
-
-  fill(0,0,255);
-  ellipse(blue.x, blue.y, blue.size);
-
-  //current color display
-  fill(colorNow.r,colorNow.g,colorNow.b);
-  ellipse(colorNow.x,colorNow.y,colorNow.size);
-
-//paint
-if(mouseIsPressed && dist(mouseX,mouseY,resetText.x,resetText.y)>60){
-
-  push();
-  strokeWeight(colorNow.size);
-  stroke(colorNow.r,colorNow.g,colorNow.b);
-  line(pmouseX, pmouseY, mouseX, mouseY);
-  pop();
 }
 
+function paint(){
+  //paint
+  if(mouseIsPressed && dist(mouseX,mouseY,resetText.x,resetText.y)>60){
+
+    push();
+    strokeWeight(5);
+    stroke(colorNow.r,colorNow.g,colorNow.b);
+    line(pmouseX, pmouseY, mouseX, mouseY);
+    pop();
+  }
 }
 
 function resetCanvas(){
@@ -110,9 +92,35 @@ function resetCanvas(){
   colorNow.b=20;
 }
 
-function mousePressed(){
+function showInstruction(){
 
-  instructiontext = ``;
+  text(instructiontext,200,70);
+}
+
+function displayUI(){
+
+  //displaying reset, brush text
+    fill(255,150,150);
+    textSize(32);
+    text(`reset`,resetText.x, resetText.y);
+    text(`brush:`,60,420);
+
+    //current color/brush display
+    fill(colorNow.r,colorNow.g,colorNow.b);
+    ellipse(colorNow.x,colorNow.y,colorNow.size);
+    
+  //color pickers
+  fill(255,0,0);
+  ellipse(red.x, red.y, red.size);
+
+  fill(0,255,0);
+  ellipse(green.x, green.y, green.size);
+
+  fill(0,0,255);
+  ellipse(blue.x, blue.y, blue.size);
+}
+
+function mousePressed(){
 
   colorMixer();
 
@@ -120,6 +128,8 @@ function mousePressed(){
   if(dReset < 60){
     resetCanvas();
   }
+
+  displayUI();
 }
 
 function colorMixer(){
