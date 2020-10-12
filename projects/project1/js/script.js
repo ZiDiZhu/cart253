@@ -184,7 +184,7 @@ function displayIntro(){
   textSize(24);
   textAlign(CENTER);
   text(`CLICK anywhere to start`, width/2 , height/2);
-  text(`a slightly infuriating painting sim`,width/2, height/2+80);
+  text(`a slightly infuriating painting sim \n NOT for mobile \n fullscreen is recommended`,width/2, height/2+80);
 }
 
 function displayUI(){
