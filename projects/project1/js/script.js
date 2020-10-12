@@ -31,17 +31,23 @@ let showingInstruction = false;
 
 let state = `intro`;//game ,end ,
 let mixingMode = `additive`; // substractive?? potentially
-let instructiontext =`Instruction:\n paint with your mouse\n click on circles on the left to mix your color in RGB \n best played in fullscreen`;
+let instructiontext =`Instruction:\n paint with mouse\n click on circles on left to mix color\n key 1,2,3 to change brush size`;
 
 // current color
 let colorNow = {
   r:20,
   b:20,
   g:20,
-  x:100,
-  y:500,
-  size:20
+  x:80,
+  y:440,
+  size:10
 };
+
+let brush1 = {
+  x:80,
+  y:440,
+  size:10,
+}
 
 // color pickers
 let red ={
@@ -81,8 +87,6 @@ function setup() {
 
 createCanvas (windowWidth,windowHeight);
 background(bg);
-
-
 
 }
 
@@ -142,17 +146,25 @@ function resetCanvas(){
   drawingArea.y1 = 80;
   drawingArea.x2 = 150;
   drawingArea.y2 = height*4/5;
-  drawingArea.x3 = width *4/5;
+  drawingArea.x3 = width *3/4;
   drawingArea.y3 = height*4/5;
-  drawingArea.x4 = width *4/5;
+  drawingArea.x4 = width *3/4;
   drawingArea.y4 = 80;
 
+  //set help text
+  helpText.x = width*7/8;
+
+//drawing out the drawingArea
   push();
   strokeWeight(6);
   stroke(100);
   fill(60);
   quad(drawingArea.x1,drawingArea.y1,drawingArea.x2,drawingArea.y2,drawingArea.x3,drawingArea.y3,drawingArea.x4,drawingArea.y4);
   pop();
+
+  //change palette position
+  red.x = width/2;
+  red.y = height*7/8;
 
 }
 
@@ -172,16 +184,26 @@ function displayUI(){
     textSize(32);
     text(`reset`,resetText.x, resetText.y);
     text(`brush:`,60,420);
-    text(`/ help`,helpText.x,helpText.y);
+    text(`help`,helpText.x,helpText.y);
 
     push();
     textSize(12);
     text(`↓ draw here ↓`,width*2/5,70);
     pop();
 
-    //current color/brush display
+    //current color/choose brush size
+    push();
     fill(colorNow.r,colorNow.g,colorNow.b);
-    ellipse(colorNow.x,colorNow.y,colorNow.size);
+    ellipse(brush1.x,brush1.y,10);
+    fill(colorNow.r,colorNow.g,colorNow.b);
+    ellipse(brush1.x,brush1.y + 40,20);
+    fill(colorNow.r,colorNow.g,colorNow.b);
+    ellipse(brush1.x,brush1.y + 100,50);
+    text(`1`,brush1.x - 50,brush1.y+10)
+    text(`2`,brush1.x - 50,brush1.y+50)
+    text(`3`,brush1.x - 50,brush1.y+110)
+
+    pop();
 
   //color pickers
   fill(255,0,0);
@@ -198,7 +220,7 @@ function displayUI(){
     textSize(16);
     textAlign(LEFT);
     fill(255,255,200);
-    text(instructiontext,200,70);
+    text(instructiontext,helpText.x-150,helpText.y+100);
     pop();
   }
 
