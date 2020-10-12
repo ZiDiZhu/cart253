@@ -40,7 +40,7 @@ let colorNow = {
   g:20,
   x:80,
   y:440,
-  size:10
+  size:5
 };
 
 let brush1 = {
@@ -78,6 +78,12 @@ let helpText = {
   y:40
 }
 
+let mixingGuideText = {
+  x:0,
+  y:0,
+  string:`Additive color mixing: \n adding red to green yields yellow; \n adding green to blue yields cyan; \n adding blue to red yields magenta; \n adding all three primary colors together yields white. \n tl,dr: try it a few times, you'll get it`
+}
+
 function preload(){
   //load background images here
   //load text
@@ -104,19 +110,17 @@ function draw() {
   if (state === `game`){
 
     displayUI();
-
     paint();
   }
 
+  //checks if in draw area
   let posX = mouseX;
   let posY = mouseY;
-
   if(posX>drawingArea.x1&&posY>drawingArea.y1&&posX<drawingArea.x3&&posY<drawingArea.y3){
     inDrawingArea = true;
   }else{
     inDrawingArea =false;
   }
-
   //console.log(`${inDrawingArea}`);
 
 }
@@ -126,7 +130,7 @@ function paint(){
   if(mouseIsPressed && state ===`game` && dist(mouseX,mouseY,resetText.x,resetText.y)>60 && inDrawingArea){
 
     push();
-    strokeWeight(5);
+    strokeWeight(colorNow.size);
     stroke(colorNow.r,colorNow.g,colorNow.b);
     line(pmouseX, pmouseY, mouseX, mouseY);
     pop();
@@ -137,9 +141,9 @@ function resetCanvas(){
   clear();
   showingInstruction = false;
   background(bg);
-  colorNow.r=20;
-  colorNow.g=20;
-  colorNow.b=20;
+  colorNow.r=30;
+  colorNow.g=30;
+  colorNow.b=30;
 
 //defining drawing area
   drawingArea.x1 = 150;
@@ -153,6 +157,8 @@ function resetCanvas(){
 
   //set help text
   helpText.x = width*7/8;
+  mixingGuideText.x = width*7/8;
+  mixingGuideText.y = height/2;
 
 //drawing out the drawingArea
   push();
@@ -165,6 +171,10 @@ function resetCanvas(){
   //change palette position
   red.x = width/2;
   red.y = height*7/8;
+  green.x = width/2 + 120;
+  green.y = height*7/8;
+  blue.x = width/2 + 240;
+  blue.y = height*7/8;
 
 }
 
@@ -174,7 +184,7 @@ function displayIntro(){
   textSize(24);
   textAlign(CENTER);
   text(`CLICK anywhere to start`, width/2 , height/2);
-
+  text(`a slightly infuriating painting sim`,width/2, height/2+80);
 }
 
 function displayUI(){
@@ -186,8 +196,10 @@ function displayUI(){
     text(`brush:`,60,420);
     text(`help`,helpText.x,helpText.y);
 
+    text(`Color Guide`,mixingGuideText.x,mixingGuideText.y);
+
     push();
-    textSize(12);
+    textSize(22);
     text(`↓ draw here ↓`,width*2/5,70);
     pop();
 
@@ -217,12 +229,14 @@ function displayUI(){
 
   if(showingInstruction){
     push();
-    textSize(16);
+    textSize(22);
     textAlign(LEFT);
     fill(255,255,200);
     text(instructiontext,helpText.x-150,helpText.y+100);
     pop();
   }
+
+  text(`color Mixer (RBG toggle):`, width/3, red.y);
 
 }
 
@@ -244,7 +258,25 @@ function mousePressed(){
     }
   }
 
-  displayUI();
+  if(dist(mouseX,mouseY,mixingGuideText.x,mixingGuideText.y)<60){
+    push();
+    textSize(22);
+    textAlign(LEFT);
+    text(mixingGuideText.string, mixingGuideText.x - 200, mixingGuideText.y +100);
+    pop();
+  }
+
+  //displayUI();
+}
+
+function keyPressed(){
+  if(keyCode === 49){
+    colorNow.size = 5;
+  }else if(keyCode === 50){
+    colorNow.size = 15;
+  }else if(keyCode === 51){
+    colorNow.size = 40;
+  }
 }
 
 function colorMixer(){
