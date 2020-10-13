@@ -49,6 +49,8 @@ let brush1 = {
   size:10,
 }
 
+let timer = 10;
+
 // color pickers
 let red ={
   x:80,
@@ -78,11 +80,19 @@ let helpText = {
   y:40
 }
 
+let finishText = {
+  x:100,
+  y:100
+}
+
 let mixingGuideText = {
   x:0,
   y:0,
   string:`Additive color mixing: \n adding red to green yields yellow; \n adding green to blue yields cyan; \n adding blue to red yields magenta; \n adding all three primary colors together yields white. \n tl,dr: try it a few times, you'll get it`
 }
+
+let amazingX = 0;
+let amazingY = 0;
 
 function preload(){
   //load background images here
@@ -122,6 +132,11 @@ function draw() {
     inDrawingArea =false;
   }
   //console.log(`${inDrawingArea}`);
+
+
+  if(state === `end`){
+    displayEnding();
+  }
 
 }
 
@@ -176,6 +191,10 @@ function resetCanvas(){
   blue.x = width/2 + 240;
   blue.y = height*7/8;
 
+
+  amazingX = 0;
+  amazingY = 0;
+
 }
 
 function displayIntro(){
@@ -195,6 +214,7 @@ function displayUI(){
     text(`reset`,resetText.x, resetText.y);
     text(`brush:`,60,420);
     text(`help`,helpText.x,helpText.y);
+    text(`FINISH`,finishText.x,finishText.y);
 
     text(`Color Guide`,mixingGuideText.x,mixingGuideText.y);
 
@@ -240,6 +260,21 @@ function displayUI(){
 
 }
 
+function displayEnding(){
+
+  amazingX++;
+  amazingY++;
+
+  push();
+  fill(random(0,255),random(0,255),random(0,255));
+  text (`AMAZING`,amazingX,amazingY);
+  if (frameCount % 60 == 0 && timer > 0) {
+  timer --;
+  text (`BEAUTIFUL`,random(0,width),random(0,height));
+}
+  pop();
+}
+
 function mousePressed(){
 
   colorMixer();
@@ -247,6 +282,7 @@ function mousePressed(){
   let dReset = dist(mouseX,mouseY,resetText.x,resetText.y);
   if(dReset < 60){
     resetCanvas();
+    state = `game`;
   }
 
   let dHelp = dist(mouseX,mouseY,helpText.x,helpText.y);
@@ -258,6 +294,11 @@ function mousePressed(){
     }
   }
 
+  let dFinish = dist(mouseX,mouseY,finishText.x,finishText.y);
+  if(dFinish < 60){
+    state = `end`;
+  }
+
   if(dist(mouseX,mouseY,mixingGuideText.x,mixingGuideText.y)<60){
     push();
     textSize(22);
@@ -266,7 +307,6 @@ function mousePressed(){
     pop();
   }
 
-  //displayUI();
 }
 
 function keyPressed(){
