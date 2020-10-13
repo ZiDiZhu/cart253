@@ -101,7 +101,7 @@ function preload(){
   //load background images here
   //load text
 
-  coverimg = loadImage("assets/images/painting.jpg");
+  coverimg = loadImage("assets/images/painting.JPG");
   titleimg = loadImage("assets/images/bob.jpg");
 }
 
