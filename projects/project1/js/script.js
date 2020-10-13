@@ -12,6 +12,9 @@ let isR = false;
 let isG = false;
 let isB = false;
 
+let titleimg;
+let coverimg;
+
 //a quad that defines the drawable area depending on windowsize
 let drawingArea = {
   x1:0,
@@ -49,7 +52,7 @@ let brush1 = {
   size:10,
 }
 
-let timer = 10;
+let timer = 7;
 
 // color pickers
 let red ={
@@ -97,6 +100,9 @@ let amazingY = 0;
 function preload(){
   //load background images here
   //load text
+
+  coverimg = loadImage("assets/images/painting.jpg");
+  titleimg = loadImage("assets/images/bob.jpg");
 }
 
 function setup() {
@@ -194,16 +200,20 @@ function resetCanvas(){
 
   amazingX = 130;
   amazingY = 0;
-  timer = 10;
+  timer = 7;
 
 }
 
 function displayIntro(){
+  background(0);
+
+imageMode(CENTER);
+image(titleimg,width/2,height/4,300,400);
 
   fill(255,150,150);
   textSize(24);
   textAlign(CENTER);
-  text(`CLICK anywhere to start`, width/2 , height/2);
+  text(`CLICK anywhere to start`, width/2 , height*4/5);
   text(`a slightly infuriating painting sim \n NOT for mobile \n fullscreen is recommended`,width/2, height/2+80);
 }
 
@@ -273,6 +283,13 @@ function displayEnding(){
   text (`BEAUTIFUL`,random(0,width),random(0,height));
   text (`GOOD ART`,random(0,width),random(0,height));
 }
+  if(timer ===0){
+    clear();
+    background(0);
+    imageMode(CENTER);
+    image(coverimg,width/2+random(-3,3),height/2-150,300,220);
+    text(`thanks for testing`,width/2,height/2);
+  }
   pop();
 }
 
