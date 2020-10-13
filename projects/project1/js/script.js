@@ -91,7 +91,7 @@ let mixingGuideText = {
   string:`Additive color mixing: \n adding red to green yields yellow; \n adding green to blue yields cyan; \n adding blue to red yields magenta; \n adding all three primary colors together yields white. \n tl,dr: try it a few times, you'll get it`
 }
 
-let amazingX = 0;
+let amazingX = 130;
 let amazingY = 0;
 
 function preload(){
@@ -192,8 +192,9 @@ function resetCanvas(){
   blue.y = height*7/8;
 
 
-  amazingX = 0;
+  amazingX = 130;
   amazingY = 0;
+  timer = 10;
 
 }
 
@@ -262,7 +263,6 @@ function displayUI(){
 
 function displayEnding(){
 
-  amazingX++;
   amazingY++;
 
   push();
@@ -271,6 +271,7 @@ function displayEnding(){
   if (frameCount % 60 == 0 && timer > 0) {
   timer --;
   text (`BEAUTIFUL`,random(0,width),random(0,height));
+  text (`GOOD ART`,random(0,width),random(0,height));
 }
   pop();
 }
