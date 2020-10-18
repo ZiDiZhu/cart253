@@ -4,6 +4,10 @@ Zi Di :)
 
 Fun project with arrays
 **************************************************/
+"use strict";
+
+let arrayofGhosts = [];
+let numGhosts = 5;
 
 let ghostImage;
 let user;
@@ -14,15 +18,21 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   ghostImage = loadImage('assets/images/ghost.png');
 
-  ghost1 = createGhost(random(50, width - 50), random(50, height - 50));
+//the number inside[] is called index, the content is called element
+
+  for(let i =0; i<numGhosts; i++){
+    let ghost = createGhost(random(50, width - 50), random(50, height - 50));
+    arrayofGhosts.push(ghost);
+  }
 }
 
 function draw() {
   background(0);
 
-  moveGhost(ghost1);
-
-  displayGhost(ghost1);
+  for(let i =0; i<arrayofGhosts.length; i++){
+    moveGhost(arrayofGhosts[i]);
+    displayGhost(arrayofGhosts[i]);
+  }
 
 }
 
@@ -47,9 +57,9 @@ function displayGhost(ghost){
 
 function moveGhost(ghost){
 
-  //5 percent chance of changing movement
-  let change = random(0,100);
-  if (change < 5){
+  //2 percent chance of changing movement
+  let change = random(0,99);
+  if (change < 2){
     ghost.vx = random(-ghost.speed, ghost.speed);
     ghost.vy = random(-ghost.speed, ghost.speed);
   }
@@ -62,4 +72,13 @@ function moveGhost(ghost){
   ghost.x = constrain(ghost.x, ghost.size, width - ghost.size);
   ghost.y = constrain(ghost.y, ghost.size, height - ghost.size);
 
+}
+
+function keyPressed(){
+
+  //press space to generate more ghosts
+  if (keyCode === 32){
+    let ghost = createGhost(random(50, width - 50), random(50, height - 50));
+    arrayofGhosts.push(ghost);
+  }
 }
