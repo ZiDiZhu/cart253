@@ -137,10 +137,17 @@ function moveGhost(ghost){
 
   //2 percent chance of changing movement
   let change = random(0,99);
-  if (change < 2){
-    ghost.vx = random(-ghost.speed, ghost.speed);
-    ghost.vy = random(-ghost.speed, ghost.speed);
-  }
+
+    if(ghost.type ==='regular'){
+      if (change < 2){
+        ghost.vx = random(-ghost.speed, ghost.speed);
+        ghost.vy = random(-ghost.speed, ghost.speed);
+      }
+    }else if (ghost.type ==='special') {
+      if (change < 40)
+      ghost.vx = random(-ghost.speed, ghost.speed);
+      ghost.vy = random(-ghost.speed, ghost.speed);
+    }
 
   //move the ghost
   ghost.x +=ghost.vx;
@@ -149,10 +156,6 @@ function moveGhost(ghost){
   //constrain to createCanvas
   ghost.x = constrain(ghost.x, ghost.size, width - ghost.size);
   ghost.y = constrain(ghost.y, ghost.size, height - ghost.size);
-
-  if(ghost.type ==='regular'){
-
-  }
 
 }
 
