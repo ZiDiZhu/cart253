@@ -3,7 +3,7 @@ class Kid{
   constructor(x,y){
     this.x = x;
     this.y = y;
-    this.speed = 5;
+    this.speed = 10;
     this.size = 50;
   }
 

@@ -118,7 +118,7 @@ function draw() {
       }
     }
   }
-  if(score >= balls.legth){
+  if(score >= balls.length){
     state = `win`;
     textSize(32);
     fill(100,200,100);
@@ -127,7 +127,7 @@ function draw() {
   }
 
 
-  if(paddleLife <=0 ||activeballCount===0 && paddleLife >0){
+  if(paddleLife <3 && activeballCount<=0){
     state = `over`;
     textSize(32);
     fill(100,200,100);

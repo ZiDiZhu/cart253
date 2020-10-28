@@ -29,6 +29,7 @@ class Ball {
     if (this.y > windowHeight){
       this.active = false;
       paddleLife -= 1;
+      activeballCount -=1;
     }
   }
 
