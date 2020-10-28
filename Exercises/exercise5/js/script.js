@@ -3,6 +3,7 @@ Exercise 5
 Zi Di
 
 attempt at Object Oriented programming
+a ball catching game, kind of rushed
 **************************************************/
 "use strict"
 
@@ -15,6 +16,7 @@ let paddle;
 
 let balls = [];
 let numBalls = 3;
+let activeballCount = 3;
 
 let platform = {
   x:0,
@@ -52,7 +54,29 @@ function setup() {
 function draw() {
   background(0);
 
+  //draw platform
+  push();
+  fill(150);
+  rectMode(CENTER);
+  rect(platform.x, platform.y,platform.w,platform.h);
+  pop();
+
+  //spawn paddle
+  paddle.move();
+  paddle.display();
+
+  //spawn kid
+  kid.move();
+  kid.display();
+
   if (state === `intro`){
+    textSize(32);
+    fill(100,200,100);
+    textAlign(CENTER);
+    text(`CATCH BALL`,windowWidth/2,windowHeight/2 - 200);
+    textSize(24);
+    fill(150,150,150);
+    text(`Instruction: \n A / D to move the kid (which is a red ball) \n mouse to move paddle \n Space to make the kid catch the ball \n don't let the balls fall \n \n CLICK anywhere to START `,windowWidth/2,windowHeight/2);
 
     //click to start game
     if(mouseIsPressed){
@@ -63,20 +87,10 @@ function draw() {
 
   if (state === `game`){
 
-    //draw platform
-    push();
-    fill(150);
-    rectMode(CENTER);
-    rect(platform.x, platform.y,platform.w,platform.h);
-    pop();
-
-    //spawn paddle
-    paddle.move();
-    paddle.display();
-
-    //spawn kid
-    kid.move();
-    kid.display();
+    textSize(24);
+    fill(150,150,150);
+    text(`Score: ` + `${score}`,width/3, 100);
+    text(`Lives: ` + `${paddleLife}`,width*2/3, 100);
 
     //spawn balls
     for (let i = 0; i < balls.length; i++){
@@ -90,22 +104,35 @@ function draw() {
         //checks distance between the ball and the kid
         let dd = dist(kid.x,kid.y,ball.x,ball.y);
         if(dd <= ball.size/2 + kid.size/2){
+          textSize(32);
+          fill(100,200,100);
+          textAlign(CENTER);
+          text(`press SPACE!`,kid.x,kid.y -100);
+          //press space to catch the ball
           if(keyIsDown(32)){
-            score++;
+            score +=1;
+            ball.active = false;
+            activeballCount -=1;
           }
         }
       }
     }
+  }
+  if(score >= balls.legth){
+    state = `win`;
+    textSize(32);
+    fill(100,200,100);
+    textAlign(CENTER);
+    text(`CONGRATS \n You caught all the balls! \n Refresh to Restart`,windowWidth/2,windowHeight/2 - 200);
+  }
 
-    if(score >=1){
-      state = `win`;
-    }
 
-
-    if(paddleLife <=0){
-      state = `over`;
-    }
-
+  if(paddleLife <=0 ||activeballCount===0 && paddleLife >0){
+    state = `over`;
+    textSize(32);
+    fill(100,200,100);
+    textAlign(CENTER);
+    text(`Game Over \n You caught ${score} balls! \n Refresh to Restart`,windowWidth/2,windowHeight/2 - 200);
   }
 
 
