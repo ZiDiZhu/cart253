@@ -19,9 +19,10 @@ function setup() {
 
   createCanvas (800,600);
 
-  player = new Player(375,555);
+  player = new Player(150,555);
 
-  floor[0] = new Floor(300,20,150,580);
+  floor[0] = new Floor(300,20,50,580);
+  floor[1] = new Floor(300,20,450,580);
 }
 
 function draw() {
@@ -32,7 +33,10 @@ function draw() {
     player.move();
     player.jump();
 
-    floor[0].display();
+    for(let i=0; i<floor.length; i++){
+      floor[i].display();
+    }
+
   }
 
 }

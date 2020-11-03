@@ -3,7 +3,7 @@ class Player{
   constructor(x,y){
     this.x = x;
     this.y = y;
-    this.vx = 10;
+    this.vx = 7;
     this.vy = 0;
     this.jumpForce = 15;
     this.maxvy = 10;
@@ -37,21 +37,20 @@ class Player{
   }
 
   jump(){
-
-    //console.log(`${this.vy}`);
-
       this.y -= this.vy;
-
       //check if player is on Floor
-      let dy = this.y + this.size/2 - floor[0].y;
-      console.log(`${this.isGrounded}`);
-      if(dy ===0 && this.x <floor[0].x + floor[0].w && this.x > floor[0].x){
-        this.isGrounded = true;
-        this.vy = 0;
-      }else{
-        this.isGrounded = false;
+      //console.log(`${this.isGrounded}`);
+      for (let i=0; i<floor.length; i++){
+        let dy = this.y + this.size/2 - floor[i].y;
+        if(dy ===0 && this.x <floor[i].x + floor[i].w && this.x > floor[i].x){
+          this.isGrounded = true;
+          this.vy = 0;
+          {break;}
+        }else{
+          this.isGrounded = false;
+        }
       }
-
+      //l-shift to jump
       if(this.isGrounded && keyIsDown(16)){
         this.vy = this.jumpForce;
       }
@@ -60,5 +59,7 @@ class Player{
       }
 
     }
+
+
 
 }
