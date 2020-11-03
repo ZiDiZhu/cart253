@@ -10,6 +10,7 @@ class Player{
     this.gravity = 1;
     this.size = 50;
     this.isGrounded = true;
+    this.active = true;
   }
 
 
@@ -42,7 +43,9 @@ class Player{
       //console.log(`${this.isGrounded}`);
       for (let i=0; i<floor.length; i++){
         let dy = this.y + this.size/2 - floor[i].y;
-        if(dy ===0 && this.x <floor[i].x + floor[i].w && this.x > floor[i].x){
+        if(dy ===0
+          && this.x - this.size/2 <floor[i].x + floor[i].w
+          && this.x + this.size/2 > floor[i].x){
           this.isGrounded = true;
           this.vy = 0;
           {break;}
@@ -57,9 +60,10 @@ class Player{
       if(!this.isGrounded){
         this.vy -=this.gravity;
       }
-
     }
 
-
+    kill(){
+      this.active = false;
+    }
 
 }

@@ -1,3 +1,5 @@
+//the platform for the player to walk on
+
 class Floor{
 
   constructor(w,h,x,y){
@@ -15,7 +17,6 @@ class Floor{
     rectMode(CORNER);
     rect(this.x,this.y,this.w,this.h);
     pop();
-
   }
 
 }
