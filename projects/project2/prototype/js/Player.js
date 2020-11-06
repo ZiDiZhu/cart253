@@ -80,4 +80,11 @@ class Player{
     this.active = false;
   }
 
+  revive(){
+    this.active = true;
+
+    //prevent falling from spawning
+    this.vy = 0;
+  }
+
 }

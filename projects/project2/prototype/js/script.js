@@ -31,6 +31,7 @@ function setup() {
   floor[3] = new Floor(400,20,200,280);
   floor[4] = new Floor(150,20,670,280);
   floor[5] = new Floor(800,5,0,280);
+  floor[6] = new Floor(800,5,0,580);
 
   //test room spikes - down
   spike[0] = new Spike(330,600,410,600,370,550);
@@ -42,10 +43,15 @@ function setup() {
 }
 
 function draw() {
-
   //for testing mechanics
   if(state === `testRoom`){
     background(0);
+
+    //instructions
+    push();
+    fill(255);
+    text(`L/R ARROW: MOVE   L-SHIFT: JUMP    R: RESTART`,300,100);
+    pop();
 
     //spawn player
     for(let i = 0; i<player.length; i++){
@@ -88,14 +94,20 @@ function draw() {
 
       //R to restart
       if(keyIsDown(82)){
-        state = `testRoom`;
-        respawnPlayer();
+        restart();
       }
   }
 
-  function respawnPlayer(){
+  function restart(){
     //respawns player
-
+    player[0].x = 50;
+    player[0].y = 555;
+    player[1].x = 50;
+    player[1].y = 255;
+    for(let i = 0; i < player.length; i++){
+      player[i].revive();
+    }
+    state = `testRoom`;
   }
 
 
