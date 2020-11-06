@@ -40,7 +40,7 @@ class Spike{
     //console.log(`${isTouchingPlayer}`);
 
     if(isTouchingPlayer){
-      player.kill();
+      player[0].kill();
     }
 
   }

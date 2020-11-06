@@ -1,7 +1,9 @@
-# A platformer
+# Plural platformers
 
 left/right arrow to move
 
 left shift to jump
 
-issues:
+to add:
+- death state and respart
+- win state

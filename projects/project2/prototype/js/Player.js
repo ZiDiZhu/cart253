@@ -24,7 +24,7 @@ class Player{
   }
 
 
-  move(){
+  move1(){
     //constrain player inside window
     this.x = constrain(this.x,25,775);
     this.y = constrain(this.y,25,575);
@@ -34,6 +34,20 @@ class Player{
       this.x -= this.vx;
     }else if(keyIsDown(RIGHT_ARROW)){
       this.x += this.vx;
+    }
+  }
+
+  //mirrored (vertical)movement
+  move2(){
+    //constrain player inside window
+    this.x = constrain(this.x,25,775);
+    this.y = constrain(this.y,25,575);
+
+    //left/right arrow key to walk
+    if(keyIsDown(LEFT_ARROW)){
+      this.x += this.vx;
+    }else if(keyIsDown(RIGHT_ARROW)){
+      this.x -= this.vx;
     }
   }
 
