@@ -27,21 +27,23 @@ class Spike{
     //check if the player is touching spike
 
     //dist between circle edge and 3 verticles of the triangle
-    let d1 = dist(player.x,player.y,this.x1,this.y1) - player.size/2;
-    let d2 = dist(player.x,player.y,this.x2,this.y2) - player.size/2;
-    let d3 = dist(player.x,player.y,this.x3,this.y3) - player.size/2;
+
+    for(let i = 0; i < player.length; i++){
+      let d1 = dist(player[i].x,player[i].y,this.x1,this.y1) - player[i].size/2;
+      let d2 = dist(player[i].x,player[i].y,this.x2,this.y2) - player[i].size/2;
+      let d3 = dist(player[i].x,player[i].y,this.x3,this.y3) - player[i].size/2;
+
+      if(d1>0 && d2>0 && d3>0){
+        this.isTouchingPlayer = false;
+      }else{
+        this.isTouchingPlayer = true;
+      }
+
+    }
 
     //if player overlapses with any of the 3 verticles
-    if(d1>0 && d2>0 && d3>0){
-      isTouchingPlayer = false;
-    }else{
-      isTouchingPlayer = true;
-    }
-    //console.log(`${isTouchingPlayer}`);
 
-    if(isTouchingPlayer){
-      player[0].kill();
-    }
+    //console.log(`${isTouchingPlayer}`);
 
   }
 

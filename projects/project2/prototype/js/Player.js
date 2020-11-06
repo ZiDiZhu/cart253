@@ -76,8 +76,8 @@ class Player{
       }
     }
 
-    kill(){
-      this.active = false;
-    }
+  kill(){
+    this.active = false;
+  }
 
 }

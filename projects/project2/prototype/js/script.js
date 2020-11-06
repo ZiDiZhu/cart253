@@ -43,7 +43,7 @@ function setup() {
 function draw() {
 
   //for testing mechanics
-  if(state = `testRoom`){
+  if(state === `testRoom`){
     background(0);
 
     //spawn player
@@ -64,10 +64,19 @@ function draw() {
       spike[i].checkPlayerCollision();
     }
 
-    if(player.active === false){
-      state = `gameover`;
+    for(let i = 0; i<spike.length; i++){
+      if(spike[i].isTouchingPlayer === true){
+        for(let i = 0; i < player.length; i++){
+          player[i].kill();
+        }
+      }
     }
 
+    for(let i = 0; i < player.length; i++){
+      if(player[i].active === false){
+        state = `gameover`;
+      }
+    }
   }
 
   if (state ===`gameover`){
@@ -85,6 +94,7 @@ function draw() {
 
   function respawnPlayer(){
     //respawns player
+
   }
 
 
