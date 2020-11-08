@@ -7,6 +7,7 @@ A basic platformer prototype
 
 "use strict"
 
+let currentLevel = 0;
 let state = `testRoom`;
 
 let player = [];
@@ -14,6 +15,7 @@ let player = [];
 let spike = [];
 let bullet= [];
 let floor = [];
+let flag = [];
 
 function setup() {
 
@@ -40,6 +42,10 @@ function setup() {
   //test room spikes - up
   spike[2] = new Spike(130,300,200,300,165,250);
   spike[3] = new Spike(600,300,670,300,635,250);
+
+  //test room - flag
+  flag[0] = new Flag(750,255);
+  flag[1] = new Flag(750,555);
 }
 
 function draw() {
@@ -69,6 +75,17 @@ function draw() {
     for(let i=0; i<spike.length; i++){
       spike[i].display();
       spike[i].checkPlayerCollision();
+    }
+
+    //display flags
+    for(let i = 0; i<flag.length;i++){
+      flag[i].display();
+      flag[i].checkCollision();
+
+      //check winning condition
+      if(flag[i].player1OnFlag === true &&flag[i],player2OnFlag === true){
+        levelCLear();
+      }
     }
 
     for(let i = 0; i<spike.length; i++){
@@ -108,6 +125,14 @@ function draw() {
       player[i].revive();
     }
     state = `testRoom`;
+  }
+
+  function levelCLear(){
+    state = `paused`;
+    push();
+    fill(255,0,0);
+    text(`level ` + currentLevel + ` clear`,width/2,height/2);
+    pop();
   }
 
 
