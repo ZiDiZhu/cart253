@@ -3,6 +3,8 @@ Go to the Flag
 Zidi Zhu
 
 A basic platformer prototype
+
+How do I make a data holder to make codes to make levels look cleaner? 
 **************************************************/
 
 "use strict"
