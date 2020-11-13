@@ -57,14 +57,15 @@ class Player{
       //console.log(`${this.isGrounded}`);
       for (let i=0; i<floor.length; i++){
         let dy = this.y + this.size/2 - floor[i].y;
-        //console.log(`${dy}`);
-        if(dy ===0
-          && this.x - this.size/2 <floor[i].x + floor[i].w
-          && this.x + this.size/2 > floor[i].x){
-          this.isGrounded = true;
-          this.vy = 0;
-          {break;}
-        }else{
+        if (dy > 0 &&
+        dy < floor[i].h && 
+        this.x - this.size / 2 < floor[i].x + floor[i].w &&
+        this.x + this.size / 2 > floor[i].x) {
+        this.isGrounded = true;
+        this.y = floor[i].y - this.size / 2;
+        this.vy = 0;
+        break;
+      }else{
           this.isGrounded = false;
         }
       }
@@ -76,6 +77,7 @@ class Player{
         this.vy -=this.gravity;
       }
     }
+
 
   kill(){
     this.active = false;

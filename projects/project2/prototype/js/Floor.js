@@ -17,6 +17,7 @@ class Floor{
     rectMode(CORNER);
     rect(this.x,this.y,this.w,this.h);
     pop();
+
   }
 
 }
