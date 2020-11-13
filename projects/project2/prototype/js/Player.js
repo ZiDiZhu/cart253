@@ -57,6 +57,7 @@ class Player{
       //console.log(`${this.isGrounded}`);
       for (let i=0; i<floor.length; i++){
         let dy = this.y + this.size/2 - floor[i].y;
+        //console.log(`${dy}`);
         if(dy ===0
           && this.x - this.size/2 <floor[i].x + floor[i].w
           && this.x + this.size/2 > floor[i].x){

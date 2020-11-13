@@ -39,6 +39,18 @@
   }
 
   function loadLevel2(){
-    
+
+    player[0] = new Player(150,400);//leftDela
+    player[1] = new Player(750,555);
+
+    //dividing line
+    floor[0] = new Floor(20,600,390,0);
+    //bottom line
+    floor[1] = new Floor(800,20,0,580);
+    floor[2] = new Floor(200,20,90,480);
+
+    spike[0] = new Spike(120,600,200,600,160,540);
+    spike[1] = new Spike(420,600,500,600,460,540);
+    spike[2] = new Spike(360,240,440,240,400,180);
 
   }

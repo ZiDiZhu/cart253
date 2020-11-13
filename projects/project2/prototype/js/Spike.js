@@ -32,7 +32,7 @@ class Spike{
       let d1 = dist(player[1].x,player[1].y,this.x1,this.y1) - player[1].size/2;
       let d2 = dist(player[1].x,player[1].y,this.x2,this.y2) - player[1].size/2;
       let d3 = dist(player[1].x,player[1].y,this.x3,this.y3) - player[1].size/2;
-      let d4 = dist(player[0].x,player[0].y,this.x1,this.y1) - player[i].size/2;
+      let d4 = dist(player[0].x,player[0].y,this.x1,this.y1) - player[0].size/2;
       let d5 = dist(player[0].x,player[0].y,this.x2,this.y2) - player[0].size/2;
       let d6 = dist(player[0].x,player[0].y,this.x3,this.y3) - player[0].size/2;
 
