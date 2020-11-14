@@ -95,6 +95,6 @@
 
     //test room - flag
     flag[0] = new Flag(750,155);
-    flag[1] = new Flag(750,555);
+    flag[1] = new Flag(250,555);
     flag[2] = new Flag(50,375);
   }

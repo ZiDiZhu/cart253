@@ -58,7 +58,7 @@ class Player{
       for (let i=0; i<floor.length; i++){
         let dy = this.y + this.size/2 - floor[i].y;
         if (dy > 0 &&
-        dy < floor[i].h && 
+        dy < floor[i].h &&
         this.x - this.size / 2 < floor[i].x + floor[i].w &&
         this.x + this.size / 2 > floor[i].x) {
         this.isGrounded = true;
@@ -78,6 +78,14 @@ class Player{
       }
     }
 
+  checkFlagCollision(){
+    for (let i = 0; i < flag.length; i ++){
+      let d1 = dist(flag[i].x, flag[i].y, this.x, this.y) - flag[i].size/2 - this.size/2;
+      if(d1 <=0){
+        flag.splice(i,1);
+      }
+    }
+  }
 
   kill(){
     this.active = false;

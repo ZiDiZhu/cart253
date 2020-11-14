@@ -63,6 +63,7 @@ function loadLevel(){
     for(let i = 0; i<player.length; i++){
       player[i].display();
       player[i].jump();
+      player[i].checkFlagCollision();
     }
     player[0].move1();
     player[1].move2();
@@ -70,6 +71,7 @@ function loadLevel(){
     for(let i = 0; i<player.length; i++){
       player[i].display();
       player[i].jump();
+      player[i].checkFlagCollision();
     }
     player[0].move1();
     player[1].move1();
@@ -79,6 +81,7 @@ function loadLevel(){
       player[i].display();
       player[i].move1();
       player[i].jump();
+      player[i].checkFlagCollision();
     }
   }
   //display floors
@@ -95,12 +98,10 @@ function loadLevel(){
   //display flags
   for(let i = 0; i<flag.length;i++){
     flag[i].display();
-    flag[i].checkCollision();
-
-    //check winning condition
-    if(flag[i].player1OnFlag === true &&flag[i],player2OnFlag === true){
-      levelCLear();
-    }
+  }
+  //check winning condition
+  if(flag.length ===0){
+    levelCLear();
   }
 
   for(let i = 0; i<spike.length; i++){
