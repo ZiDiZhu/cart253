@@ -5,7 +5,6 @@
     floor = [];
     player = [];
     flag = [];
-    console.log(`${floor.length}`);
     background(0);
   }
 
