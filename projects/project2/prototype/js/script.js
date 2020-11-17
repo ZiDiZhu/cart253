@@ -17,6 +17,7 @@ let player1Sprite;
 let player2Sprite;
 
 let berrySprite;
+let spikeSprite;
 
 let spike = [];
 let bullet= [];
@@ -28,6 +29,7 @@ function preload(){
   player1Sprite = loadImage('assets/images/player.png');
   player2Sprite = loadImage('assets/images/player2.png');
   berrySprite = loadImage('assets/images/berry.png');
+  spikeSprite = loadImage('assets/images/spike.png');
 }
 
 function setup() {
@@ -75,7 +77,7 @@ function draw() {
 }
 
 function loadLevel(){
-  
+
   background(0,10,70); //deep blue
 
   //instructions
