@@ -12,7 +12,7 @@ class Floor{
   display(){
 
     push();
-    fill(120);
+    fill(120,180,20);
     noStroke();
     rectMode(CORNER);
     rect(this.x,this.y,this.w,this.h);

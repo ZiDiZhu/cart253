@@ -11,9 +11,8 @@ class Flag{
   display(){
     //placeholder circles
     push();
-    fill(255,255,0);
-    stroke(0);
-    ellipse(this.x,this.y,this.size);
+    imageMode(CENTER);
+    image(berrySprite,this.x,this.y);
     pop();
   }
 

@@ -14,12 +14,19 @@ class Player{
   }
 
 
-  display(){
-    //temporarily testing as a circle, player sprite will be added later
+  display1(){
+    //display the regular bunny sprite
     push();
-    stroke(0);
-    fill(200,50,50);
-    ellipse(this.x,this.y,this.size);
+    imageMode(CENTER);
+    image(player1Sprite,this.x,this.y);
+    pop();
+  }
+
+  display2(){
+    //display the regular bunny sprite
+    push();
+    imageMode(CENTER);
+    image(player2Sprite,this.x,this.y);
     pop();
   }
 

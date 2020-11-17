@@ -13,11 +13,22 @@ let currentLevel = 1;
 let state = `testRoom`;
 
 let player = [];
+let player1Sprite;
+let player2Sprite;
+
+let berrySprite;
 
 let spike = [];
 let bullet= [];
 let floor = [];
 let flag = [];
+
+function preload(){
+  //load art/sound assets
+  player1Sprite = loadImage('assets/images/player.png');
+  player2Sprite = loadImage('assets/images/player2.png');
+  berrySprite = loadImage('assets/images/berry.png');
+}
 
 function setup() {
 
@@ -64,54 +75,58 @@ function draw() {
 }
 
 function loadLevel(){
-  background(0);
+  
+  background(0,10,70); //deep blue
 
   //instructions
   push();
   fill(255);
   textAlign(CENTER);
-  text(`L/R ARROW: MOVE   L-SHIFT: JUMP    R: RESTART \n RED IS YOU \n COLLECT ALL YELLOW`,400,100);
+  text(`L/R ARROW: MOVE   L-SHIFT: JUMP    R: RESTART \n BUNNY IS YOU \n COLLECT ALL BERRY`,400,100);
   text(`level ` + `${currentLevel}`,400,50);
   pop();
 
   //spawn player
   if(currentLevel ===2){
     for(let i = 0; i<player.length; i++){
-      player[i].display();
       player[i].jump();
       player[i].checkFlagCollision();
     }
     player[0].move1();
     player[1].move2();
+    player[0].display1();
+    player[1].display2();
   }else if(currentLevel ===3){
     for(let i = 0; i<player.length; i++){
-      player[i].display();
       player[i].jump();
       player[i].checkFlagCollision();
     }
     player[0].move1();
     player[1].move1();
     player[2].move2();
+    player[0].display1();
+    player[1].display1();
+    player[2].display2();
   }else{
     for(let i = 0; i<player.length; i++){
-      player[i].display();
+      player[i].display1();
       player[i].move1();
       player[i].jump();
       player[i].checkFlagCollision();
     }
   }
-  //display floors
+  //display1 floors
   for(let i=0; i<floor.length; i++){
     floor[i].display();
   }
 
-  //display spikes
+  //display1 spikes
   for(let i=0; i<spike.length; i++){
     spike[i].display();
     spike[i].checkPlayerCollision();
   }
 
-  //display flags
+  //display1 flags
   for(let i = 0; i<flag.length;i++){
     flag[i].display();
   }
