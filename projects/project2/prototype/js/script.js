@@ -69,7 +69,9 @@ function loadLevel(){
   //instructions
   push();
   fill(255);
-  text(`L/R ARROW: MOVE   L-SHIFT: JUMP    R: RESTART`,300,100);
+  textAlign(CENTER);
+  text(`L/R ARROW: MOVE   L-SHIFT: JUMP    R: RESTART \n RED IS YOU \n COLLECT ALL YELLOW`,400,100);
+  text(`level ` + `${currentLevel}`,400,50);
   pop();
 
   //spawn player
@@ -138,6 +140,7 @@ function restart(){
   //respawns player
   floor =[];
   loadLevel1();
+  currentLevel = 1;
   player[0].x = 50;
   player[0].y = 555;
   player[1].x = 50;

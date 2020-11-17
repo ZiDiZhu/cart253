@@ -5,6 +5,7 @@
     floor = [];
     player = [];
     flag = [];
+    spike = [];
     background(0);
   }
 
@@ -54,7 +55,6 @@
 
     spike[0] = new Spike(120,600,200,600,160,540);
     spike[1] = new Spike(570,600,650,600,610,540);
-    spike[2] = new Spike(300,500,380,500,340,440);
 
     flag[0] = new Flag(240,255);
     flag[1] = new Flag(540,255);
@@ -95,5 +95,5 @@
     //test room - flag
     flag[0] = new Flag(750,155);
     flag[1] = new Flag(250,555);
-    flag[2] = new Flag(50,375);
+    flag[2] = new Flag(250,375);
   }
