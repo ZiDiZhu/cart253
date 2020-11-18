@@ -6,7 +6,6 @@
     player = [];
     flag = [];
     spike = [];
-    background(0);
   }
 
 
@@ -25,29 +24,37 @@
 
     //test room - flag
     flag[0] = new Flag(750,255);
-    flag[1] = new Flag(750,555);
+    flag[1] = new Flag(500,555);
   }
 
   function loadLevel2(){
 
-    player[0] = new Player(50,555);//leftDela
-    player[1] = new Player(750,555);
+    player[0] = new Player(250,455);//left
+    player[1] = new Player(570,455);//right
 
-    //dividing line
-    floor[0] = new Floor(20,600,390,0); //CHANGE THIS INTO A WALL CLASS INSTEAD
-    //bottom line
-    floor[1] = new Floor(800,20,0,580);
-    floor[2] = new Floor(170,20,130,480);
-    floor[3] = new Floor(200,20,390,480);
-    floor[4] = new Floor(110,20,0,380);
-    floor[5] = new Floor(110,20,650,380);
-    floor[6] = new Floor(400,20,200,280);
+    //level 2 floors
+    floor[0] = new Floor(800,20,0,580);//bottom floor
+    floor[1] = new Floor(120,20,200,480);//tier1
+    floor[2] = new Floor(120,20,500,480);//tier1
+    floor[3] = new Floor(120,20,0,380);//tier2
+    floor[4] = new Floor(120,20,680,380);//tier2
+    floor[5] = new Floor(120,20,200,280);//tier3
+    floor[6] = new Floor(120,20,500,280);//tier3
+    floor[7] = new Floor(120,20,0,180);//tier4
+    floor[8] = new Floor(120,20,680,180);//tier4
 
-    spike[0] = new Spike(120,600,200,600,160,540);
-    spike[1] = new Spike(570,600,650,600,610,540);
 
-    flag[0] = new Flag(240,255);
-    flag[1] = new Flag(540,255);
+    //level 2 spikes on the bottom
+    let next = 0;
+    for(let i = 0; i <15 ; i++){
+      next +=50;
+      spike[i] = new Spike(next,555);
+    }
+
+    flag[0] = new Flag(400,375);//tier1
+    flag[1] = new Flag(100,355);//tier2
+    flag[2] = new Flag(300,255);//tier3
+    flag[3] = new Flag(770,155);//tier4
   }
 
   function loadLevel3(){

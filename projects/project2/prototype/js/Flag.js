@@ -1,4 +1,4 @@
-//transports player to next level
+//They are actually berries, not flags
 
 class Flag{
 
