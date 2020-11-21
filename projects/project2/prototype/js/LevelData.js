@@ -57,40 +57,40 @@
     flag[3] = new Flag(770,155);//tier4
   }
 
+//level 3: watch your steps
   function loadLevel3(){
+
     player[0] = new Player(50,555);
     player[1] = new Player(50,155);
     player[2] = new Player(750,375);
 
-    //test room platforms-dowm
-    floor[0] = new Floor(330,20,0,580);
-    floor[1] = new Floor(300,20,500,580);
+    //platforms-dowm
+    floor[0] = new Floor(800,20,0,580);
 
-    //test room platforms-up
-    floor[2] = new Floor(130,20,0,180);
-    floor[3] = new Floor(400,20,200,180);
-    floor[4] = new Floor(150,20,670,180);
-    floor[5] = new Floor(800,5,0,180);
+    //platforms-up
+    floor[1] = new Floor(600,20,350,180);
+    floor[2] = new Floor(250,20,0,180);
 
     //mid
-    floor[6] = new Floor(800,5,0,400);
-    floor[7] = new Floor(130,20,0,400);
-    floor[8] = new Floor(400,20,200,400);
-    floor[9] = new Floor(150,20,670,400);
+    floor[3] = new Floor(80,20,720,400);
+    floor[4] = new Floor(630,20,0,400);
 
-    //test room spikes - down
-    spike[0] = new Spike(330,600,410,600,370,550);
-    spike[1] = new Spike(410,600,490,600,450,550);
+    //spikes - down
+    spike[0] = new Spike(500,555);
+    spike[1] = new Spike(550,555);
+    spike[2] = new Spike(600,555);
+    spike[3] = new Spike(450,555);
+    spike[4] = new Spike(800,555);
 
     //test room spikes - up
-    spike[2] = new Spike(130,200,200,200,165,150);
+    spike[5] = new Spike(650,155);
 
-    //mid
-    spike[3] = new Spike(600,400,670,400,635,350);
-    spike[4] = new Spike(130,400,200,400,165,350);
+    //mid spikes
+    spike[6] = new Spike(220,375);
 
     //test room - flag
-    flag[0] = new Flag(750,155);
-    flag[1] = new Flag(250,555);
-    flag[2] = new Flag(250,375);
+    flag[0] = new Flag(100,300);//up
+    flag[1] = new Flag(680,555);//down
+    flag[2] = new Flag(500,375);//mid
+    flag[3] = new Flag(380,155);//mid
   }
