@@ -4,7 +4,7 @@ left/right arrow to move
 
 left shift to jump
 
-to fix:
+QUESTIONS:
 
-winstate (class Flag{})
-make "falling out of screen" a lose condition
+how do i associate a level with a number so in the restart() I dont have to
+use if level1/if level2/if level 3?
