@@ -85,6 +85,32 @@ class Player{
       }
     }
 
+//reverse-gravity jump
+  jump2(){
+    this.y -= this.vy;
+    for (let i=0; i<floor.length; i++){
+      let dy = this.y - this.size/2 - floor[i].y - floor[i].h;
+      console.log(`${this.isGrounded}`);
+      if (dy < 0 &&
+      dy < floor[i].h &&
+      this.x - this.size / 2 < floor[i].x + floor[i].w &&
+      this.x + this.size / 2 > floor[i].x){
+        this.isGrounded = true;
+        this.y = floor[i].y + this.size/2 + floor[i].h;
+        this.vy = 0;
+        break;
+      }else{
+          this.isGrounded = false;
+        }
+      }
+      if(this.isGrounded && keyIsDown(16)){
+        this.vy = -this.jumpForce;
+      }
+      if(!this.isGrounded){
+        this.vy +=this.gravity;
+      }
+    }
+
   checkFlagCollision(){
     for (let i = 0; i < flag.length; i ++){
       let d1 = dist(flag[i].x, flag[i].y, this.x, this.y) - flag[i].size/2 - this.size/2;

@@ -94,3 +94,10 @@
     flag[2] = new Flag(500,375);//mid
     flag[3] = new Flag(380,155);//mid
   }
+
+  function loadLevel4(){
+    player[0] = new Player(150,195);
+    floor[0] = new Floor(200,20,100,150);
+
+    flag[0] = new Flag(400,375);
+  }

@@ -9,7 +9,7 @@ How do I make a data holder to make codes to make levels look cleaner?
 
 "use strict"
 
-let currentLevel = 1;
+let currentLevel = 4;
 let state = `testRoom`;
 
 let player = [];
@@ -36,9 +36,10 @@ function setup() {
 
   createCanvas (800,600);
 
-  loadLevel1();
+  //loadLevel1();
   //loadLevel2();
   //loadLevel3();
+  loadLevel4();
 }
 
 function draw() {
@@ -109,6 +110,12 @@ function loadLevel(){
     player[0].display1();
     player[1].display1();
     player[2].display2();
+  }if(currentLevel ===4){
+    for(let i = 0; i<player.length; i++){
+      player[i].jump2();
+    }
+    player[0].move1();
+    player[0].display1();
   }else{
     for(let i = 0; i<player.length; i++){
       player[i].display1();
