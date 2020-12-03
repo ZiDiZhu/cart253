@@ -30,6 +30,13 @@ class Player{
     pop();
   }
 
+  display3(){
+    //display the regular bunny sprite
+    push();
+    imageMode(CENTER);
+    image(player1Sprite_flipped,this.x,this.y);
+    pop();
+  }
 
   move1(){
     //constrain player inside window
@@ -90,7 +97,6 @@ class Player{
     this.y -= this.vy;
     for (let i=0; i<floor.length; i++){
       let dy = this.y - this.size/2 - floor[i].y - floor[i].h;
-      console.log(`${this.isGrounded}`);
       if (dy < 0 &&
       dy < floor[i].h &&
       this.x - this.size / 2 < floor[i].x + floor[i].w &&

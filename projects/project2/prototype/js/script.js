@@ -9,12 +9,14 @@ How do I make a data holder to make codes to make levels look cleaner?
 
 "use strict"
 
-let currentLevel = 4;
+let currentLevel = 1;
 let state = `testRoom`;
 
 let player = [];
-let player1Sprite;
-let player2Sprite;
+let player1Sprite;//white bunny
+let player2Sprite;//grey bunny
+let player1Sprite_flipped;//white bunny upside down
+let player2Sprite_flipped;
 
 let berrySprite;
 let spikeSprite;
@@ -28,6 +30,8 @@ function preload(){
   //load art/sound assets
   player1Sprite = loadImage('assets/images/player.png');
   player2Sprite = loadImage('assets/images/player2.png');
+  player1Sprite_flipped = loadImage('assets/images/player_flipped.png');
+  player2Sprite_flipped = loadImage('assets/images/player2_flipped.png');
   berrySprite = loadImage('assets/images/berry.png');
   spikeSprite = loadImage('assets/images/spike.png');
 }
@@ -36,10 +40,10 @@ function setup() {
 
   createCanvas (800,600);
 
-  //loadLevel1();
+  loadLevel1();
   //loadLevel2();
   //loadLevel3();
-  loadLevel4();
+  //loadLevel4();
 }
 
 function draw() {
@@ -111,12 +115,13 @@ function loadLevel(){
     player[1].display1();
     player[2].display2();
   }if(currentLevel ===4){
-    for(let i = 0; i<player.length; i++){
-      player[i].jump2();
-    }
+    player[0].jump2();
     player[0].move1();
-    player[0].display1();
-  }else{
+    player[0].display3();
+    player[1].jump();
+    player[1].move1();
+    player[1].display1();
+  }if(currentLevel ===1){
     for(let i = 0; i<player.length; i++){
       player[i].display1();
       player[i].move1();

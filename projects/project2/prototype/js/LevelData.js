@@ -96,8 +96,9 @@
   }
 
   function loadLevel4(){
-    player[0] = new Player(150,195);
-    floor[0] = new Floor(200,20,100,150);
+    player[0] = new Player(150,395);
+    player[1] = new Player(150,335);
+    floor[0] = new Floor(800,20,0,350);
 
-    flag[0] = new Flag(400,375);
+    flag[0] = new Flag(400,325);
   }
