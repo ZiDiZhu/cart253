@@ -1,16 +1,16 @@
 /**************************************************
-Go to the Flag
+Plural Platformers
 Zidi Zhu
 
-A basic platformer prototype
-
-How do I make a data holder to make codes to make levels look cleaner?
+A platformer
 **************************************************/
 
 "use strict"
 
-let currentLevel = 1;
+let currentLevel = 0;
 let state = `testRoom`;
+
+let titleImg;
 
 let player = [];
 let player1Sprite;//white bunny
@@ -28,6 +28,8 @@ let flag = [];
 
 function preload(){
   //load art/sound assets
+  titleImg = createImg('assets/images/title.gif');
+
   player1Sprite = loadImage('assets/images/player.png');
   player2Sprite = loadImage('assets/images/player2.png');
   player1Sprite_flipped = loadImage('assets/images/player_flipped.png');
@@ -40,7 +42,8 @@ function setup() {
 
   createCanvas (800,600);
 
-  loadLevel1();
+  loadLevel0();
+  //loadLevel1();
   //loadLevel2();
   //loadLevel3();
   //loadLevel4();
@@ -59,7 +62,9 @@ function draw() {
 //to load to next level
   if (state === `paused`){
     if(mouseIsPressed){
-      if(currentLevel === 2){
+      if(currentLevel === 1){
+        loadLevel1();
+      }else if(currentLevel === 2){
         loadLevel2();
       }else if(currentLevel === 3){
         loadLevel3();
@@ -97,6 +102,9 @@ function loadLevel(){
   pop();
 
   //spawn player
+  if(currentLevel ===0){
+    startLevel0();
+  }
   if(currentLevel ===1){
     startLevel1();
   }
@@ -147,6 +155,15 @@ function loadLevel(){
 
 
 //Sets player behaviour
+
+function startLevel0(){
+  titleImg.position(100,120);
+  player[0].display1();
+  player[0].move1();
+  player[0].jump();
+  player[0].checkFlagCollision();
+}
+
 function startLevel1(){
   for(let i = 0; i<player.length; i++){
     player[i].display1();

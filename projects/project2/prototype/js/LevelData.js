@@ -2,12 +2,22 @@
 
 "use strict"
   function clearLevel(){
+    titleImg.remove();
     floor = [];
     player = [];
     flag = [];
     spike = [];
   }
 
+  function loadLevel0(){
+    player[0] = new Player(50,455);
+
+    floor[0] = new Floor(800,20,0,480);
+
+    spike[0] = new Spike(400,455);//down
+
+    flag[0] = new Flag(750,455);
+  }
 
   function loadLevel1(){
     player[0] = new Player(50,555);
