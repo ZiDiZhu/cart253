@@ -29,6 +29,7 @@
 
   function loadLevel2(){
 
+
     player[0] = new Player(250,455);//left
     player[1] = new Player(570,455);//right
 

@@ -47,7 +47,10 @@ function setup() {
 }
 
 function draw() {
-  //for testing mechanics
+
+  cheatMode();
+
+  //game state
   if(state === `testRoom`){
     loadLevel();
   }
@@ -94,53 +97,30 @@ function loadLevel(){
   pop();
 
   //spawn player
-  if(currentLevel ===2){
-    for(let i = 0; i<player.length; i++){
-      player[i].jump();
-      player[i].checkFlagCollision();
-    }
-    player[0].move1();
-    player[1].move2();
-    player[0].display1();
-    player[1].display2();
-  }else if(currentLevel ===3){
-    for(let i = 0; i<player.length; i++){
-      player[i].jump();
-      player[i].checkFlagCollision();
-    }
-    player[0].move1();
-    player[1].move1();
-    player[2].move2();
-    player[0].display1();
-    player[1].display1();
-    player[2].display2();
-  }if(currentLevel ===4){
-    player[0].jump2();
-    player[0].move1();
-    player[0].display3();
-    player[1].jump();
-    player[1].move1();
-    player[1].display1();
-  }if(currentLevel ===1){
-    for(let i = 0; i<player.length; i++){
-      player[i].display1();
-      player[i].move1();
-      player[i].jump();
-      player[i].checkFlagCollision();
-    }
+  if(currentLevel ===1){
+    startLevel1();
   }
-  //display1 floors
+  else if(currentLevel ===2){
+    startLevel2();
+  }else if(currentLevel ===3){
+    startLevel3();
+  }else if(currentLevel ===4){
+    startLevel4();
+  }
+
+
+  //display floors
   for(let i=0; i<floor.length; i++){
     floor[i].display();
   }
 
-  //display1 spikes
+  //display spikes
   for(let i=0; i<spike.length; i++){
     spike[i].display();
     spike[i].checkPlayerCollision();
   }
 
-  //display1 flags
+  //display flags
   for(let i = 0; i<flag.length;i++){
     flag[i].display();
   }
@@ -164,6 +144,86 @@ function loadLevel(){
     }
   }
 }
+
+
+//Sets player behaviour
+function startLevel1(){
+  for(let i = 0; i<player.length; i++){
+    player[i].display1();
+    player[i].move1();
+    player[i].jump();
+    player[i].checkFlagCollision();
+  }
+}
+
+function startLevel2(){
+  for(let i = 0; i<player.length; i++){
+    player[i].jump();
+    player[i].checkFlagCollision();
+  }
+  player[0].move1();
+  player[1].move2();
+  player[0].display1();
+  player[1].display2();
+}
+
+function startLevel3(){
+  for(let i = 0; i<player.length; i++){
+    player[i].jump();
+    player[i].checkFlagCollision();
+  }
+  player[0].move1();
+  player[1].move1();
+  player[2].move2();
+  player[0].display1();
+  player[1].display1();
+  player[2].display2();
+}
+
+function startLevel4(){
+  player[0].jump2();
+  player[0].move1();
+  player[0].display3();
+  player[1].jump();
+  player[1].move1();
+  player[1].display1();
+}
+
+
+//load level at command
+function cheatMode(){
+  //1 to load level 1, 2 to load level 2, etc
+
+  if(keyIsDown(49)){
+    state = `paused`
+    currentLevel = 1;
+    clearLevel();
+    loadLevel1();
+    state = `testRoom`;
+  }
+  if(keyIsDown(50)){
+    state = `paused`
+    currentLevel = 2;
+    clearLevel();
+    loadLevel2();
+    state = `testRoom`;
+  }
+  if(keyIsDown(51)){
+    state = `paused`
+    currentLevel = 3;
+    clearLevel();
+    loadLevel3();
+    state = `testRoom`;
+  }
+  if(keyIsDown(52)){
+    state = `paused`
+    currentLevel = 4;
+    clearLevel();
+    loadLevel4();
+    state = `testRoom`;
+  }
+}
+
 
 function restart(){
   //restarts current level
