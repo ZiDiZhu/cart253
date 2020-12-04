@@ -26,6 +26,7 @@ class Spike{
       //using size/3 instead of /3 because there's some margin to the sprites
       if (d< this.size/3 + player[i].size/3){
         this.isTouchingPlayer = true;
+        killedSFX.play();
         {break;}
       }else{
         this.isTouchingPlayer = false;

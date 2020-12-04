@@ -21,6 +21,15 @@ let player2Sprite_flipped;
 let berrySprite;
 let spikeSprite;
 
+let jumpSFX;
+let collectedSFX;
+let killedSFX;
+let startSFX;
+let clearSFX;
+let bgm_intro;
+let bgm_game;
+let bgm_outro;
+
 let spike = [];
 let bullet= [];
 let floor = [];
@@ -36,6 +45,15 @@ function preload(){
   player2Sprite_flipped = loadImage('assets/images/player2_flipped.png');
   berrySprite = loadImage('assets/images/berry.png');
   spikeSprite = loadImage('assets/images/spike.png');
+
+  jumpSFX = loadSound('assets/sounds/jump.wav');
+  collectedSFX = loadSound('assets/sounds/collected.wav');
+  killedSFX = loadSound('assets/sounds/killed.wav');
+  startSFX = loadSound('assets/sounds/levelStart.wav');
+  clearSFX = loadSound('assets/sounds/levelCleared.wav');
+  bgm_intro = loadSound('assets/sounds/bgm_intro.wav');
+  bgm_game = loadSound('assets/sounds/bgm_game.wav');
+  bgm_outro = loadSound('assets/sounds/bgm_outro.wav');
 }
 
 function setup() {
@@ -47,6 +65,7 @@ function setup() {
   //loadLevel2();
   //loadLevel3();
   //loadLevel4();
+  bgm_intro.loop();
 }
 
 function draw() {
@@ -62,8 +81,11 @@ function draw() {
 //to load to next level
   if (state === `paused`){
     if(mouseIsPressed){
+      startSFX.play();
       if(currentLevel === 1){
         loadLevel1();
+        bgm_intro.stop();
+        bgm_game.loop();
       }else if(currentLevel === 2){
         loadLevel2();
       }else if(currentLevel === 3){
@@ -83,6 +105,7 @@ function draw() {
 
       //R to restart
       if(keyIsDown(82)){
+        startSFX.play();
         restart();
       }
   }
@@ -246,16 +269,21 @@ function restart(){
   //restarts current level
   clearLevel();
   state = `testRoom`;
-  if(currentLevel === 1){
+  if(currentLevel === 0){
+    loadLevel0();
+  }else if(currentLevel === 1){
     loadLevel1();
   }else if (currentLevel === 2){
     loadLevel2();
   }else if (currentLevel === 3){
     loadLevel3();
+  }else if (currentLevel === 4){
+    loadLevel4();
   }
 }
 
 function levelCLear(){
+  clearSFX.play();
   clearLevel();
   state = `paused`;
   push();

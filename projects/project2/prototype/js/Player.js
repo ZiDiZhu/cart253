@@ -86,6 +86,7 @@ class Player{
       //l-shift to jump
       if(this.isGrounded && keyIsDown(16)){
         this.vy = this.jumpForce;
+        jumpSFX.play();
       }
       if(!this.isGrounded){
         this.vy -=this.gravity;
@@ -122,6 +123,7 @@ class Player{
       let d1 = dist(flag[i].x, flag[i].y, this.x, this.y) - flag[i].size/2 - this.size/2;
       if(d1 <=0){
         flag.splice(i,1);
+        collectedSFX.play();
       }
     }
   }
