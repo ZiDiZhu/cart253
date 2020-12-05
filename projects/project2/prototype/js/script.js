@@ -7,7 +7,10 @@ A platformer
 
 "use strict"
 
-let currentLevel = 0;
+let currentLevel= {
+  level:0,
+  title:''
+  };
 let state = `testRoom`;
 
 let titleImg;
@@ -88,21 +91,21 @@ function draw() {
   if (state === `paused`){
     if(mouseIsPressed){
       startSFX.play();
-      if(currentLevel === 0){
+      if(currentLevel.level === 0){
         loadLevel0();
         bgm_intro.stop();
         bgm_game.loop();
-      }else if(currentLevel === 1){
+      }else if(currentLevel.level === 1){
         loadLevel1();
         bgm_intro.stop();
         bgm_game.loop();
-      }else if(currentLevel === 2){
+      }else if(currentLevel.level === 2){
         loadLevel2();
-      }else if(currentLevel === 3){
+      }else if(currentLevel.level === 3){
         loadLevel3();
-      }else if(currentLevel === 4){
+      }else if(currentLevel.level === 4){
         loadLevel4();
-      }else if(currentLevel === 5){
+      }else if(currentLevel.level === 5){
         loadLevel5();
       }
       state = `testRoom`;
@@ -112,7 +115,9 @@ function draw() {
   if (state ===`gameover`){
       push();
       fill(255);
-      text(`game over`,width/2,height/2);
+      textAlign(CENTER);
+      textSize(24);
+      text(`game over \n R to restart`,width/2,height/2);
       pop();
 
       //R to restart
@@ -131,25 +136,27 @@ function loadLevel(){
   //instructions
   push();
   fill(255);
+  text(`you are bunny \n collect all berries \n L/R ARROW: MOVE \n SHIFT: JUMP`,10,10);
   textAlign(CENTER);
-  text(`L/R ARROW: MOVE   L-SHIFT: JUMP    R: RESTART \n BUNNY IS YOU \n COLLECT ALL BERRY`,400,100);
-  text(`level ` + `${currentLevel}`,400,50);
+  text(`level ` + `${currentLevel.level}`,400,50);
+  textSize(24);
+  text(`${currentLevel.title}`,400,85);
   pop();
 
   //spawn player
-  if(currentLevel ===0){
+  if(currentLevel.level ===0){
     startLevel0();
   }
-  if(currentLevel ===1){
+  if(currentLevel.level ===1){
     startLevel1();
   }
-  else if(currentLevel ===2){
+  else if(currentLevel.level ===2){
     startLevel2();
-  }else if(currentLevel ===3){
+  }else if(currentLevel.level ===3){
     startLevel3();
-  }else if(currentLevel ===4){
+  }else if(currentLevel.level ===4){
     startLevel4();
-  }else if(currentLevel ===5){
+  }else if(currentLevel.level ===5){
     startLevel5();
   }
 
@@ -299,35 +306,35 @@ function cheatMode(){
 
   if(keyIsDown(49)){
     state = `paused`
-    currentLevel = 1;
+    currentLevel.level = 1;
     clearLevel();
     loadLevel1();
     state = `testRoom`;
   }
   if(keyIsDown(50)){
     state = `paused`
-    currentLevel = 2;
+    currentLevel.level = 2;
     clearLevel();
     loadLevel2();
     state = `testRoom`;
   }
   if(keyIsDown(51)){
     state = `paused`
-    currentLevel = 3;
+    currentLevel.level = 3;
     clearLevel();
     loadLevel3();
     state = `testRoom`;
   }
   if(keyIsDown(52)){
     state = `paused`
-    currentLevel = 4;
+    currentLevel.level = 4;
     clearLevel();
     loadLevel4();
     state = `testRoom`;
   }
   if(keyIsDown(53)){
     state = `paused`
-    currentLevel = 5;
+    currentLevel.level = 5;
     clearLevel();
     loadLevel5();
     state = `testRoom`;
@@ -339,17 +346,17 @@ function restart(){
   //restarts current level
   clearLevel();
   state = `testRoom`;
-  if(currentLevel === 0){
+  if(currentLevel.level === 0){
     loadLevel0();
-  }else if(currentLevel === 1){
+  }else if(currentLevel.level === 1){
     loadLevel1();
-  }else if (currentLevel === 2){
+  }else if (currentLevel.level === 2){
     loadLevel2();
-  }else if (currentLevel === 3){
+  }else if (currentLevel.level === 3){
     loadLevel3();
-  }else if (currentLevel === 4){
+  }else if (currentLevel.level === 4){
     loadLevel4();
-  }else if (currentLevel === 5){
+  }else if (currentLevel.level === 5){
     loadLevel5();
   }
 }
@@ -359,8 +366,10 @@ function levelCLear(){
   clearLevel();
   state = `paused`;
   push();
-  fill(255,0,0);
-  text(`level ` + currentLevel + ` clear \n Click to play next level`,width/2,height/2);
-  currentLevel +=1;
+  fill(250,150,100);
+  textAlign(CENTER);
+  textSize(24);
+  text(`level ` + currentLevel.level + ` clear \n CLICK for next level`,width/2,height/2);
+  currentLevel.level +=1;
   pop();
 }

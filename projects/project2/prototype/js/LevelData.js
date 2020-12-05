@@ -10,6 +10,8 @@
   }
 
   function loadLevel0(){
+
+    currentLevel.title = 'INTRO';
     player[0] = new Player(50,455);
 
     floor[0] = new Floor(800,20,0,480);
@@ -20,6 +22,7 @@
   }
 
   function loadLevel1(){
+    currentLevel.title = 'TWIN';
     player[0] = new Player(50,555);
     player[1] = new Player(50,255);
 
@@ -38,7 +41,7 @@
   }
 
   function loadLevel2(){
-
+    currentLevel.title = 'OTHER TWIN';
 
     player[0] = new Player(250,455);//left
     player[1] = new Player(570,455);//right
@@ -70,6 +73,8 @@
 
 //level 3: watch your steps
   function loadLevel3(){
+
+    currentLevel.title = 'THREE';
 
     player[0] = new Player(50,555);
     player[1] = new Player(50,155);
@@ -107,6 +112,9 @@
   }
 
   function loadLevel4(){
+
+    currentLevel.title = 'REFLECTION';
+
     player[0] = new Player(80,395);//reversed
     player[1] = new Player(80,335);//normal
     floor[0] = new Floor(800,20,0,350);
@@ -125,12 +133,14 @@
   }
 
   function loadLevel5(){
+
+    currentLevel.title = 'STEPS';
     player[0] = new Player(430,275);
-    player[1] = new Player(370,345);
+    player[1] = new Player(430,345);
 
     floor[0] = new Floor(180,20,340,300);//center
     floor[1] = new Floor(220,20,0,300);//L
-    floor[2] = new Floor(200,20,610,350);//r-down
+    floor[2] = new Floor(200,20,600,350);//r-down
     floor[3] = new Floor(350,20,0,50);//l-up-
 
     //spikeroll_up
@@ -145,7 +155,7 @@
       next2 +=50;
       spike[i] = new Spike(next2,25);
     }
-    spike[30] = new Spike(100,275);//l
+    spike[30] = new Spike(110,275);//l
     spike[31] = new Spike(30,345);//l
 
     flag[0] = new Flag(700,325);//r-down-up
