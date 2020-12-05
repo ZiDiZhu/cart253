@@ -123,3 +123,32 @@
     spike[5] = new Spike(690,75);//up
     spike[6] = new Spike(690,25);//up
   }
+
+  function loadLevel5(){
+    player[0] = new Player(430,275);
+    player[1] = new Player(370,345);
+
+    floor[0] = new Floor(180,20,340,300);//center
+    floor[1] = new Floor(220,20,0,300);//L
+    floor[2] = new Floor(200,20,610,350);//r-down
+    floor[3] = new Floor(350,20,0,50);//l-up-
+
+    //spikeroll_up
+    let next = 0;
+    for(let i = 0; i <15 ; i++){
+      next +=50;
+      spike[i] = new Spike(next,575);
+    }
+    //spikeRoll_down
+    let next2 = 0;
+    for(let i = 15; i <30 ; i++){
+      next2 +=50;
+      spike[i] = new Spike(next2,25);
+    }
+    spike[30] = new Spike(100,275);//l
+    spike[31] = new Spike(30,345);//l
+
+    flag[0] = new Flag(700,325);//r-down-up
+    flag[1] = new Flag(760,395);//r-down-down
+    flag[2] = new Flag(30,95);//r-up-up
+  }

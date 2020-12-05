@@ -38,6 +38,14 @@ class Player{
     pop();
   }
 
+  display4(){
+    //display the regular bunny sprite
+    push();
+    imageMode(CENTER);
+    image(player2Sprite_flipped,this.x,this.y);
+    pop();
+  }
+
   move1(){
     //constrain player inside window
     this.x = constrain(this.x,25,775);
