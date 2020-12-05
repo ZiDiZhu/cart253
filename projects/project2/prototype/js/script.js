@@ -20,6 +20,9 @@ let player2Sprite_flipped;
 
 let berrySprite;
 let spikeSprite;
+let spikeSprite_flipped;
+
+let instrImg;
 
 let jumpSFX;
 let collectedSFX;
@@ -45,6 +48,8 @@ function preload(){
   player2Sprite_flipped = loadImage('assets/images/player2_flipped.png');
   berrySprite = loadImage('assets/images/berry.png');
   spikeSprite = loadImage('assets/images/spike.png');
+  spikeSprite_flipped = loadImage('assets/images/spike_flipped.png');
+  instrImg = loadImage('assets/images/instr.png');
 
   jumpSFX = loadSound('assets/sounds/jump.wav');
   collectedSFX = loadSound('assets/sounds/collected.wav');
@@ -82,7 +87,11 @@ function draw() {
   if (state === `paused`){
     if(mouseIsPressed){
       startSFX.play();
-      if(currentLevel === 1){
+      if(currentLevel === 0){
+        loadLevel0();
+        bgm_intro.stop();
+        bgm_game.loop();
+      }else if(currentLevel === 1){
         loadLevel1();
         bgm_intro.stop();
         bgm_game.loop();
@@ -145,12 +154,6 @@ function loadLevel(){
     floor[i].display();
   }
 
-  //display spikes
-  for(let i=0; i<spike.length; i++){
-    spike[i].display();
-    spike[i].checkPlayerCollision();
-  }
-
   //display flags
   for(let i = 0; i<flag.length;i++){
     flag[i].display();
@@ -181,10 +184,15 @@ function loadLevel(){
 
 function startLevel0(){
   titleImg.position(100,120);
+  image(instrImg,0,450);
   player[0].display1();
   player[0].move1();
   player[0].jump();
   player[0].checkFlagCollision();
+  for(let i=0; i<spike.length; i++){
+    spike[i].display();
+    spike[i].checkPlayerCollision();
+  }
 }
 
 function startLevel1(){
@@ -193,6 +201,10 @@ function startLevel1(){
     player[i].move1();
     player[i].jump();
     player[i].checkFlagCollision();
+  }
+  for(let i=0; i<spike.length; i++){
+    spike[i].display();
+    spike[i].checkPlayerCollision();
   }
 }
 
@@ -205,6 +217,10 @@ function startLevel2(){
   player[1].move2();
   player[0].display1();
   player[1].display2();
+  for(let i=0; i<spike.length; i++){
+    spike[i].display();
+    spike[i].checkPlayerCollision();
+  }
 }
 
 function startLevel3(){
@@ -218,6 +234,10 @@ function startLevel3(){
   player[0].display1();
   player[1].display1();
   player[2].display2();
+  for(let i=0; i<spike.length; i++){
+    spike[i].display();
+    spike[i].checkPlayerCollision();
+  }
 }
 
 function startLevel4(){
@@ -227,6 +247,19 @@ function startLevel4(){
   player[1].jump();
   player[1].move1();
   player[1].display1();
+  spike[0].display2();
+  spike[1].display();
+  spike[2].display();
+  spike[3].display2();
+  spike[4].display();
+  spike[5].display2();
+  spike[6].display();
+  for(let i = 0; i<player.length; i++){
+    player[i].checkFlagCollision();
+  }
+  for(let i=0; i<spike.length; i++){
+    spike[i].checkPlayerCollision();
+  }
 }
 
 

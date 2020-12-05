@@ -99,7 +99,7 @@ class Player{
     for (let i=0; i<floor.length; i++){
       let dy = this.y - this.size/2 - floor[i].y - floor[i].h;
       if (dy < 0 &&
-      dy < floor[i].h &&
+      dy > - floor[i].h &&
       this.x - this.size / 2 < floor[i].x + floor[i].w &&
       this.x + this.size / 2 > floor[i].x){
         this.isGrounded = true;

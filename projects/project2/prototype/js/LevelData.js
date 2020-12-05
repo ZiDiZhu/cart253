@@ -107,9 +107,19 @@
   }
 
   function loadLevel4(){
-    player[0] = new Player(150,395);
-    player[1] = new Player(150,335);
+    player[0] = new Player(80,395);//reversed
+    player[1] = new Player(80,335);//normal
     floor[0] = new Floor(800,20,0,350);
+    floor[1] = new Floor(400,20,580,250);
 
-    flag[0] = new Flag(400,325);
+    flag[0] = new Flag(750,395);
+    flag[1] = new Flag(620,225);
+
+    spike[0] = new Spike(350,395);//down
+    spike[1] = new Spike(200,325);//up\
+    spike[2] = new Spike(690,225);//up
+    spike[3] = new Spike(690,175);//up
+    spike[4] = new Spike(690,125);//up
+    spike[5] = new Spike(690,75);//up
+    spike[6] = new Spike(690,25);//up
   }

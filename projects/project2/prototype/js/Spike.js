@@ -19,6 +19,13 @@ class Spike{
     pop();
   }
 
+  display2(){
+    push();
+    imageMode(CENTER);
+    image(spikeSprite_flipped,this.x,this.y);
+    pop();
+  }
+
   checkPlayerCollision(){
 
     for(let i = 0; i <player.length; i++){
