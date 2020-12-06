@@ -139,7 +139,7 @@ function loadLevel(){
   //instructions
   push();
   fill(255);
-  text(`you are bunny \n collect all berries \n L/R ARROW: MOVE \n SHIFT: JUMP`,10,10);
+  text(`you are bunny \n collect all berries \n L/R ARROW: MOVE    /or A D \n SHIFT: JUMP    /or SPACE`,10,10);
   textAlign(CENTER);
   text(`level ` + `${currentLevel.level}`,400,50);
   textSize(24);

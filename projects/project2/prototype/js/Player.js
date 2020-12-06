@@ -52,9 +52,9 @@ class Player{
     this.y = constrain(this.y,25,575);
 
     //left/right arrow key to walk
-    if(keyIsDown(LEFT_ARROW)){
+    if(keyIsDown(LEFT_ARROW)|| keyIsDown(65)){
       this.x -= this.vx;
-    }else if(keyIsDown(RIGHT_ARROW)){
+    }else if(keyIsDown(RIGHT_ARROW)||keyIsDown(68)){
       this.x += this.vx;
     }
   }
@@ -66,9 +66,9 @@ class Player{
     this.y = constrain(this.y,25,575);
 
     //left/right arrow key to walk
-    if(keyIsDown(LEFT_ARROW)){
+    if(keyIsDown(LEFT_ARROW)|| keyIsDown(65)){
       this.x += this.vx;
-    }else if(keyIsDown(RIGHT_ARROW)){
+    }else if(keyIsDown(RIGHT_ARROW)||keyIsDown(68)){
       this.x -= this.vx;
     }
   }
@@ -92,9 +92,11 @@ class Player{
         }
       }
       //l-shift to jump
-      if(this.isGrounded && keyIsDown(16)){
-        this.vy = this.jumpForce;
-        jumpSFX.play();
+      if(this.isGrounded){
+        if(keyIsDown(16)||keyIsDown(32)){
+          this.vy = this.jumpForce;
+          jumpSFX.play();
+        }
       }
       if(!this.isGrounded){
         this.vy -=this.gravity;
@@ -118,8 +120,11 @@ class Player{
           this.isGrounded = false;
         }
       }
-      if(this.isGrounded && keyIsDown(16)){
-        this.vy = -this.jumpForce;
+      if(this.isGrounded){
+        if(keyIsDown(16)||keyIsDown(32)){
+          this.vy = - this.jumpForce;
+          jumpSFX.play();
+        }
       }
       if(!this.isGrounded){
         this.vy +=this.gravity;
