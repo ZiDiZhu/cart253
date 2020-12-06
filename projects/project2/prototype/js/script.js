@@ -74,6 +74,7 @@ function setup() {
   //loadLevel3();
   //loadLevel4();
   //loadLevel5();
+  //loadLevel6();
   bgm_intro.loop();
 }
 
@@ -107,6 +108,8 @@ function draw() {
         loadLevel4();
       }else if(currentLevel.level === 5){
         loadLevel5();
+      }else if(currentLevel.level === 6){
+        loadLevel6();
       }
       state = `testRoom`;
     }
@@ -158,6 +161,8 @@ function loadLevel(){
     startLevel4();
   }else if(currentLevel.level ===5){
     startLevel5();
+  }else if (currentLevel.level ===6){
+    startLevel6();
   }
 
 
@@ -298,6 +303,31 @@ function startLevel5(){
   }
 }
 
+function startLevel6(){
+  player[0].display1();
+  player[0].jump();
+  player[0].move1();
+  player[1].display2();
+  player[1].jump();
+  player[1].move2();
+  player[2].display1();
+  player[2].jump();
+  player[2].move1();
+  player[3].display2();
+  player[3].jump();
+  player[3].move2();
+  player[4].display1();
+  player[4].jump();
+  player[4].move1();
+  for(let i=0; i<spike.length; i++){
+    spike[i].display();
+    spike[i].checkPlayerCollision();
+  }
+  for(let i = 0; i<player.length; i++){
+    player[i].checkFlagCollision();
+  }
+}
+
 
 
 //load level at command
@@ -338,6 +368,12 @@ function cheatMode(){
     clearLevel();
     loadLevel5();
     state = `testRoom`;
+  }if(keyIsDown(54)){
+    state = `paused`
+    currentLevel.level = 6;
+    clearLevel();
+    loadLevel6();
+    state = `testRoom`;
   }
 }
 
@@ -358,6 +394,8 @@ function restart(){
     loadLevel4();
   }else if (currentLevel.level === 5){
     loadLevel5();
+  }else if (currentLevel.level === 6){
+    loadLevel6();
   }
 }
 

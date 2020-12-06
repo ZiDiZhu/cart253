@@ -162,3 +162,28 @@
     flag[1] = new Flag(760,395);//r-down-down
     flag[2] = new Flag(30,95);//r-up-up
   }
+
+  function loadLevel6(){
+    currentLevel.title = 'PARTY';
+    player[0] = new Player(300,300);
+    player[1] = new Player(350,300);
+    player[2] = new Player(600,300);
+    player[3] = new Player(650,150);
+    player[4] = new Player(30,405);
+
+    floor[0] = new Floor(600,20,80,325);
+    floor[1] = new Floor(300,20,500,170);
+    floor[2] = new Floor(200,20,600,405);
+    floor[3] = new Floor(800,20,0,580);
+    floor[4] = new Floor(150,20,350,475);
+    floor[5] = new Floor(80,20,0,420);
+
+    spike[0] = new Spike(775,380);
+    spike[1] = new Spike(480,300);
+    spike[2] = new Spike(775,145);
+    spike[3] = new Spike(170,300);
+
+    flag[0] = new Flag(100,300);
+    flag[1] = new Flag(650,380);
+    flag[2] = new Flag(420,450);
+  }
