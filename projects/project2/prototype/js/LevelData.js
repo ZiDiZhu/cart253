@@ -189,5 +189,15 @@
   }
 
   function loadLevel7(){
-    state = 'stop';
+    currentLevel.title = 'THX 4 PLAYING';
+    let next = -50;
+    for(let i = 0; i <5 ; i++){
+      next +=150;
+      player[i] = new Player(next,575);
+    }
+    let next2 = -50;
+    for(let i = 5; i <10 ; i++){
+      next2 +=150;
+      player[i] = new Player(next2,125);
+    }
   }

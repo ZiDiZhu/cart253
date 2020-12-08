@@ -41,6 +41,8 @@ let bullet= [];
 let floor = [];
 let flag = [];
 
+var link;
+
 function preload(){
   //load art/sound assets
   titleImg = createImg('assets/images/title.gif');
@@ -335,14 +337,21 @@ function startLevel6(){
 }
 
 function startLevel7(){
-  bgm_game.stop();
   push();
-  fill(255);
+  fill(255,120,0);
   textAlign(CENTER);
-  textSize(24);
+  textSize(18);
+  link = createA("https://hybrid.concordia.ca/z_zid/portfolio/games.html", "more games by Zi Di >>", "_blank");
+  link.position(320, 480);
   text(`plural platformers \n made by Zi Di \n\n special thanks:
     \n concordia cart 253 \n my friends for test playing \n\n tools used: \n coding: P5JS \n art: Aseprite \n music: Ableton `,width/2,200);
   pop();
+  for(let  i = 0; i < 5; i++){
+    player[i].display1();
+  }
+  for(let  i = 5; i < 10; i++){
+    player[i].display2();
+  }
 }
 
 
@@ -391,6 +400,12 @@ function cheatMode(){
     clearLevel();
     loadLevel6();
     state = `testRoom`;
+  }if(keyIsDown(55)){
+    state = `paused`
+    currentLevel.level = 7;
+    clearLevel();
+    loadLevel7();
+    state = `testRoom`;
   }
 }
 
@@ -419,7 +434,6 @@ function restart(){
 }
 
 function levelCLear(){
-    clearSFX.play();
     clearLevel();
     state = `paused`;
     push();
@@ -427,6 +441,7 @@ function levelCLear(){
     textAlign(CENTER);
     textSize(24);
     if(currentLevel.level <7){
+      clearSFX.play();
       text(`level ` + currentLevel.level + ` clear \n CLICK for next level`,width/2,height/2);
       currentLevel.level +=1;
     }
