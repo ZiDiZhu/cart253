@@ -89,9 +89,11 @@ function draw() {
 
 //called when using mouseClick when "level clear"
 //to load to next level
-  if (state === `paused`){
+  if (state === `paused` && currentLevel.level <=7){
     if(mouseIsPressed){
-      startSFX.play();
+      if(currentLevel <7){
+          startSFX.play();
+      }
       if(currentLevel.level === 0){
         loadLevel0();
         bgm_intro.stop();
@@ -110,6 +112,8 @@ function draw() {
         loadLevel5();
       }else if(currentLevel.level === 6){
         loadLevel6();
+      }else if(currentLevel.level === 7){
+        loadLevel7();
       }
       state = `testRoom`;
     }
@@ -163,6 +167,8 @@ function loadLevel(){
     startLevel5();
   }else if (currentLevel.level ===6){
     startLevel6();
+  }else if (currentLevel.level ===7){
+    startLevel7();
   }
 
 
@@ -328,6 +334,17 @@ function startLevel6(){
   }
 }
 
+function startLevel7(){
+  bgm_game.stop();
+  push();
+  fill(255);
+  textAlign(CENTER);
+  textSize(24);
+  text(`plural platformers \n made by Zi Di \n\n special thanks:
+    \n concordia cart 253 \n my friends for test playing \n\n tools used: \n coding: P5JS \n art: Aseprite \n music: Ableton `,width/2,200);
+  pop();
+}
+
 
 
 //load level at command
@@ -396,18 +413,24 @@ function restart(){
     loadLevel5();
   }else if (currentLevel.level === 6){
     loadLevel6();
+  }else if (currentLevel.level === 7){
+    loadLevel7();
   }
 }
 
 function levelCLear(){
-  clearSFX.play();
-  clearLevel();
-  state = `paused`;
-  push();
-  fill(250,150,100);
-  textAlign(CENTER);
-  textSize(24);
-  text(`level ` + currentLevel.level + ` clear \n CLICK for next level`,width/2,height/2);
-  currentLevel.level +=1;
-  pop();
+    clearSFX.play();
+    clearLevel();
+    state = `paused`;
+    push();
+    fill(250,150,100);
+    textAlign(CENTER);
+    textSize(24);
+    if(currentLevel.level <7){
+      text(`level ` + currentLevel.level + ` clear \n CLICK for next level`,width/2,height/2);
+      currentLevel.level +=1;
+    }
+
+    pop();
+
 }

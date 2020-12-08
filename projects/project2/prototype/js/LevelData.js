@@ -187,3 +187,7 @@
     flag[1] = new Flag(650,380);
     flag[2] = new Flag(420,450);
   }
+
+  function loadLevel7(){
+    state = 'stop';
+  }
