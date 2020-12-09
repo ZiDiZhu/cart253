@@ -2,7 +2,14 @@
 Plural Platformers
 Zidi Zhu
 
-A platformer
+A puzzle platformer
+this is the 'main' script:
+- starts game
+- defines variables and loads art/sound assets
+- switches level
+- defines winning/losing conditions
+- player behaviour/display type for each level
+- UI
 **************************************************/
 
 "use strict"
@@ -11,7 +18,7 @@ let currentLevel= {
   level:0,
   title:''
   };
-let state = `testRoom`;
+let state = `testRoom`; //paused
 
 let titleImg;
 
@@ -19,7 +26,7 @@ let player = [];
 let player1Sprite;//white bunny
 let player2Sprite;//grey bunny
 let player1Sprite_flipped;//white bunny upside down
-let player2Sprite_flipped;
+let player2Sprite_flipped;//gray bunny upside down
 
 let berrySprite;
 let spikeSprite;
@@ -41,7 +48,7 @@ let bullet= [];
 let floor = [];
 let flag = [];
 
-var link;
+var link;//link to my website, displayed at final level
 
 function preload(){
   //load art/sound assets
@@ -142,7 +149,7 @@ function loadLevel(){
 
   background(0,10,70); //deep blue
 
-  //instructions
+  //instructions UI
   push();
   fill(255);
   text(`you are bunny \n collect all berries \n L/R ARROW: MOVE    /or A D \n SHIFT: JUMP    /or SPACE`,10,10);
@@ -336,6 +343,7 @@ function startLevel6(){
   }
 }
 
+//final level
 function startLevel7(){
   push();
   fill(255,120,0);

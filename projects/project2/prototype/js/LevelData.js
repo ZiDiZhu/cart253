@@ -1,6 +1,9 @@
 //stores level data
+//creates player, floor, spikes and berries for each level
 
 "use strict"
+
+//deletes everything in the  floor, player, spikes, berries from each level when the level is complete
   function clearLevel(){
     titleImg.remove();
     floor = [];

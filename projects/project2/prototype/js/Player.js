@@ -1,5 +1,7 @@
 class Player{
 
+  //player behaviours
+
   constructor(x,y){
     this.x = x;
     this.y = y;
@@ -13,15 +15,15 @@ class Player{
     this.active = true;
   }
 
-
+  //white bunny sprite
   display1(){
-    //display the regular bunny sprite
     push();
     imageMode(CENTER);
     image(player1Sprite,this.x,this.y);
     pop();
   }
 
+  //gray bunny sprite
   display2(){
     //display the regular bunny sprite
     push();
@@ -30,28 +32,29 @@ class Player{
     pop();
   }
 
+  // upside-down whilte bunny sprite
   display3(){
-    //display the regular bunny sprite
     push();
     imageMode(CENTER);
     image(player1Sprite_flipped,this.x,this.y);
     pop();
   }
 
+  // upside-down gray bunny sprite
   display4(){
-    //display the regular bunny sprite
     push();
     imageMode(CENTER);
     image(player2Sprite_flipped,this.x,this.y);
     pop();
   }
 
+  //regular movement
   move1(){
     //constrain player inside window
     this.x = constrain(this.x,25,775);
     this.y = constrain(this.y,25,575);
 
-    //left/right arrow key to walk
+    //left/right arrow key to walk (or A D)
     if(keyIsDown(LEFT_ARROW)|| keyIsDown(65)){
       this.x -= this.vx;
     }else if(keyIsDown(RIGHT_ARROW)||keyIsDown(68)){
@@ -73,6 +76,8 @@ class Player{
     }
   }
 
+
+  //regular jump
   jump(){
       this.y -= this.vy;
       //check if player is on Floor
@@ -131,6 +136,7 @@ class Player{
       }
     }
 
+//checks if the player can collect the berry
   checkFlagCollision(){
     for (let i = 0; i < flag.length; i ++){
       let d1 = dist(flag[i].x, flag[i].y, this.x, this.y) - flag[i].size/2 - this.size/2;

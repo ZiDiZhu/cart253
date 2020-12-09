@@ -1,14 +1,15 @@
-//the platform for the player to walk on
+//the platform for the players to walk on
 
 class Floor{
 
   constructor(w,h,x,y){
-    this.w = w;
-    this.h = h;
+    this.w = w;//width
+    this.h = h;//height
     this.x = x;
     this.y = y;
   }
 
+  
   display(){
 
     push();
